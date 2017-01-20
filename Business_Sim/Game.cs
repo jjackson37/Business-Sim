@@ -1,7 +1,13 @@
-﻿namespace Business_Sim
+﻿using System;
+
+namespace Business_Sim
 {
     class Game
     {
+        protected difficulty gameDifficulty;
+        public int cash { get; protected set; }
+        protected DateTime startDate;
+
         public enum difficulty
         {
             Unknown = 0,
@@ -15,7 +21,35 @@
 
         public Game(difficulty gameDifficulty)
         {
+            this.gameDifficulty = gameDifficulty;
+        }
 
+        public void StartGame()
+        {
+            switch (gameDifficulty)
+            {
+                case difficulty.vEasy:
+                    cash = 7500;
+                    break;
+                case difficulty.Easy:
+                    cash = 5000;
+                    break;
+                case difficulty.Normal:
+                    cash = 2500;
+                    break;
+                case difficulty.Hard:
+                    cash = 1000;
+                    break;
+                case difficulty.vHard:
+                    cash = 500;
+                    break;
+                case difficulty.Extreme:
+                    cash = 100;
+                    break;
+                default:
+                    break;
+            }
+            startDate = DateTime.Today.Date;
         }
     }
 }

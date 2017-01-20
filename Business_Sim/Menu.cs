@@ -4,6 +4,8 @@ namespace Business_Sim
 {
     class Menu
     {
+        Game currentGame;
+
         public void MainMenuSelection(){
             bool isRunning = true;
             while (isRunning)
@@ -15,8 +17,34 @@ namespace Business_Sim
                 {
                     case '1':
                         Console.Write("What difficulty?\n1-vEasy\n2-Easy\n3-Normal\n4-Hard\n5-vHard\n6-Extreme\n");
-                        Game.difficulty difficultyInput = (Game.difficulty)(Console.ReadKey(true).KeyChar);
-                        Game currentGame = new Game(difficultyInput);
+                        Game.difficulty difficultyInput = Game.difficulty.Unknown;
+                        switch (Console.ReadKey().KeyChar)
+                        {
+                            case '1':
+                                difficultyInput = Game.difficulty.vEasy;
+                                break;
+                            case '2':
+                                difficultyInput = Game.difficulty.Easy; ;
+                                break;
+                            case '3':
+                                difficultyInput = Game.difficulty.Normal;
+                                break;
+                            case '4':
+                                difficultyInput = Game.difficulty.Hard;
+                                break;
+                            case '5':
+                                difficultyInput = Game.difficulty.vHard;
+                                break;
+                            case '6':
+                                difficultyInput = Game.difficulty.Extreme;
+                                break;
+                            default:
+                                break;
+                        }
+                        currentGame = new Game(difficultyInput);
+                        currentGame.StartGame();
+                        Console.Clear();
+                        GameMenu();
                         break;
                     case '2':
                         //Load save file function
@@ -34,6 +62,12 @@ namespace Business_Sim
                         break;
                 }
             }
+        }
+
+        private void GameMenu()
+        {
+            Console.Write("-Business Sim-\nCurrent date:" + DateTime.Today.ToShortDateString() + "\nCurrent cash:" + currentGame.cash + "\n");
+            Console.ReadKey();
         }
     }
 }
