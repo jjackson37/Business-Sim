@@ -6,9 +6,8 @@ namespace Business_Sim
     {
         static void Main(string[] args)
         {
-            Menu mainMenu = new Menu();
-            mainMenu.MainMenuSelection();
-            Console.ReadKey();
+             Menu mainMenu = new Menu();
+             mainMenu.MainMenuSelection();
         }
     }
 }
