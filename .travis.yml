@@ -1,9 +1,9 @@
 language: csharp
 script:
-  - xbuild /p:Configuration=Debug YoutubeMusicPlayerProject.sln
+  - xbuild /p:Configuration=Debug Business_Sim.sln
 before_install:
   - sudo apt-get install nunit-console
 before_script:
-  - nuget restore YoutubeMusicPlayerProject.sln
+  - nuget restore Business_Sim.sln
 after_script:
   - nunit-console Tests/bin/Debug/Tests.dll
