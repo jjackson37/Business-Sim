@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Business_Sim
+﻿namespace Business_Sim
 {
     class Program
     {

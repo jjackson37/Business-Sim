@@ -6,7 +6,8 @@ namespace Business_Sim
     {
         Game currentGame;
 
-        public void MainMenuSelection(){
+        public void MainMenuSelection()
+        {
             bool isRunning = true;
             while (isRunning)
             {
@@ -16,41 +17,40 @@ namespace Business_Sim
                 {
                     case '1':
                         Console.Write("    What difficulty?\n    1-vEasy\n    2-Easy\n    3-Normal\n    4-Hard\n    5-vHard\n    6-Extreme\n    ");
-                        Game.difficulty difficultyInput = Game.difficulty.Unknown;
-                        bool invalidInput = false;
+                        Game.Difficulty difficultyInput = Game.Difficulty.Unknown;
                         switch (Console.ReadKey(true).KeyChar)
                         {
                             case '1':
-                                difficultyInput = Game.difficulty.vEasy;
+                                difficultyInput = Game.Difficulty.vEasy;
                                 break;
                             case '2':
-                                difficultyInput = Game.difficulty.Easy;
+                                difficultyInput = Game.Difficulty.Easy;
                                 break;
                             case '3':
-                                difficultyInput = Game.difficulty.Normal;
+                                difficultyInput = Game.Difficulty.Normal;
                                 break;
                             case '4':
-                                difficultyInput = Game.difficulty.Hard;
+                                difficultyInput = Game.Difficulty.Hard;
                                 break;
                             case '5':
-                                difficultyInput = Game.difficulty.vHard;
+                                difficultyInput = Game.Difficulty.vHard;
                                 break;
                             case '6':
-                                difficultyInput = Game.difficulty.Extreme;
+                                difficultyInput = Game.Difficulty.Extreme;
                                 break;
                             default:
                                 Console.WriteLine("Invalid input");
-                                invalidInput = true;
+                                Console.ReadKey(true);
+                                Console.Clear();
                                 break;
                         }
-                        if (invalidInput)
+                        if (difficultyInput != Game.Difficulty.Unknown)
                         {
-                            break;
+                            currentGame = new Game(difficultyInput);
+                            currentGame.StartGame();
+                            Console.Clear();
+                            GameMenu();
                         }
-                        currentGame = new Game(difficultyInput);
-                        currentGame.StartGame();
-                        Console.Clear();
-                        GameMenu();
                         break;
                     case '2':
                         //TODO: Load save file function
@@ -61,10 +61,13 @@ namespace Business_Sim
                     case '4':
                         Console.WriteLine("Goodbye");
                         Console.ReadKey(true);
+                        Console.Clear();
                         isRunning = false;
                         break;
                     default:
                         Console.WriteLine("Invalid input");
+                        Console.ReadKey(true);
+                        Console.Clear();
                         break;
                 }
             }
@@ -83,16 +86,19 @@ namespace Business_Sim
                         PropertiesMenu();
                         break;
                     case '2':
-                        //TODO: Employees menu
+                        EmployeesMenu(); //TODO
                         break;
                     case '3':
                         //TODO: Calculate costs and profits for day
                         break;
                     case '4':
                         inGame = false;
+                        Console.Clear();
                         break;
                     default:
                         Console.WriteLine("Invalid input");
+                        Console.ReadKey(true);
+                        Console.Clear();
                         break;
                 }
             }
@@ -100,37 +106,70 @@ namespace Business_Sim
 
         private void PropertiesMenu()
         {
-            Console.Write("    -Properties-\n    1-Buy\n    2-Sell\n    3-Upgrade\n    4-View owned properties\n    5-Back\n");
-            bool inPropertyMenu = true;
-            while (inPropertyMenu)
+            Console.Write("    -Properties-\n    1-Buy\n    2-Sell\n    3-Upgrade\n    4-View owned properties\n");
+            switch (Console.ReadKey(true).KeyChar)
             {
-                switch (Console.ReadKey(true).KeyChar)
-                {
-                    case '1':
-                        //TODO: Buy property
-                        break;
-                    case '2':
-                        //TODO: Sell property
-                        break;
-                    case '3':
-                        //TODO: Upgrade property
-                        break;
-                    case '4':
-                        //TODO: List owned properties
-                        break;
-                    case '5':
-                        inPropertyMenu = false;
-                        break;
-                    default:
-                        Console.WriteLine("    Invalid input");
-                        break;
-                }
+                case '1':
+                    Console.Write("        -Buy\n        1-Flat\n        2-Flat Block\n        3-House\n        4-Office\n"
+                        + "        5-Office block\n        6-Shop\n        7-Shopping centre\n        8-Sky scraper\n");
+                    Property.PropertyType propertyTypeToBuy = Property.PropertyType.Unknown;
+                    switch (Console.ReadKey(true).KeyChar)
+                    {
+                        case '1':
+                            propertyTypeToBuy = Property.PropertyType.Flat;
+                            break;
+                        case '2':
+                            propertyTypeToBuy = Property.PropertyType.FlatBlock;
+                            break;
+                        case '3':
+                            propertyTypeToBuy = Property.PropertyType.House;
+                            break;
+                        case '4':
+                            propertyTypeToBuy = Property.PropertyType.Office;
+                            break;
+                        case '5':
+                            propertyTypeToBuy = Property.PropertyType.OfficeBlock;
+                            break;
+                        case '6':
+                            propertyTypeToBuy = Property.PropertyType.Shop;
+                            break;
+                        case '7':
+                            propertyTypeToBuy = Property.PropertyType.ShoppingCentre;
+                            break;
+                        case '8':
+                            propertyTypeToBuy = Property.PropertyType.SkyScraper;
+                            break;
+                        default:
+                            Console.WriteLine("        Invalid input");
+                            Console.ReadKey(true);
+                            Console.Clear();
+                            break;
+                    }
+                    if (propertyTypeToBuy != Property.PropertyType.Unknown)
+                    {
+                        currentGame.gameProperties.BuyProperty(propertyTypeToBuy); //TODO
+                    }
+                    break;
+                case '2':
+                    currentGame.gameProperties.SellProperty(); //TODO
+                    break;
+                case '3':
+                    currentGame.gameProperties.UpgradeProperty(); //TODO
+                    break;
+                case '4':
+                    currentGame.gameProperties.ViewProperties(); //TODO
+                    break;
+                default:
+                    Console.WriteLine("    Invalid input");
+                    Console.ReadKey(true);
+                    Console.Clear();
+                    break;
             }
         }
 
         private void EmployeesMenu()
         {
-
+            //TODO
         }
 
     }

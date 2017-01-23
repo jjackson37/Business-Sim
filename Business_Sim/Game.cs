@@ -4,12 +4,13 @@ namespace Business_Sim
 {
     class Game
     {
-        protected difficulty gameDifficulty;
+        public Property gameProperties;
+        protected Difficulty gameDifficulty;
         public int cash { get; protected set; }
         public DateTime startDate { get; private set; }
         public DateTime currentDate { get; protected set; }
 
-        public enum difficulty
+        public enum Difficulty
         {
             Unknown = 0,
             vEasy = 1,
@@ -20,7 +21,7 @@ namespace Business_Sim
             Extreme = 6
         }
 
-        public Game(difficulty gameDifficulty)
+        public Game(Difficulty gameDifficulty)
         {
             this.gameDifficulty = gameDifficulty;
         }
@@ -29,22 +30,22 @@ namespace Business_Sim
         {
             switch (gameDifficulty)
             {
-                case difficulty.vEasy:
+                case Difficulty.vEasy:
                     cash = 7500;
                     break;
-                case difficulty.Easy:
+                case Difficulty.Easy:
                     cash = 5000;
                     break;
-                case difficulty.Normal:
+                case Difficulty.Normal:
                     cash = 2500;
                     break;
-                case difficulty.Hard:
+                case Difficulty.Hard:
                     cash = 1000;
                     break;
-                case difficulty.vHard:
+                case Difficulty.vHard:
                     cash = 500;
                     break;
-                case difficulty.Extreme:
+                case Difficulty.Extreme:
                     cash = 100;
                     break;
                 default:
@@ -52,6 +53,7 @@ namespace Business_Sim
             }
             startDate = DateTime.Today.Date;
             currentDate = startDate;
+            gameProperties = new Property();
         }
     }
 }
