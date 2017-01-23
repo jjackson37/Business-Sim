@@ -15,7 +15,7 @@ namespace Business_Sim
                 switch (Console.ReadKey(true).KeyChar)
                 {
                     case '1':
-                        Console.Write("What difficulty?\n1-vEasy\n2-Easy\n3-Normal\n4-Hard\n5-vHard\n6-Extreme\n");
+                        Console.Write("    What difficulty?\n    1-vEasy\n    2-Easy\n    3-Normal\n    4-Hard\n    5-vHard\n    6-Extreme\n    ");
                         Game.difficulty difficultyInput = Game.difficulty.Unknown;
                         bool invalidInput = false;
                         switch (Console.ReadKey(true).KeyChar)
@@ -80,7 +80,7 @@ namespace Business_Sim
                 switch (Console.ReadKey(true).KeyChar)
                 {
                     case '1':
-                        //TODO: Properties menu
+                        PropertiesMenu();
                         break;
                     case '2':
                         //TODO: Employees menu
@@ -97,5 +97,41 @@ namespace Business_Sim
                 }
             }
         }
+
+        private void PropertiesMenu()
+        {
+            Console.Write("    -Properties-\n    1-Buy\n    2-Sell\n    3-Upgrade\n    4-View owned properties\n    5-Back\n");
+            bool inPropertyMenu = true;
+            while (inPropertyMenu)
+            {
+                switch (Console.ReadKey(true).KeyChar)
+                {
+                    case '1':
+                        //TODO: Buy property
+                        break;
+                    case '2':
+                        //TODO: Sell property
+                        break;
+                    case '3':
+                        //TODO: Upgrade property
+                        break;
+                    case '4':
+                        //TODO: List owned properties
+                        break;
+                    case '5':
+                        inPropertyMenu = false;
+                        break;
+                    default:
+                        Console.WriteLine("    Invalid input");
+                        break;
+                }
+            }
+        }
+
+        private void EmployeesMenu()
+        {
+
+        }
+
     }
 }
