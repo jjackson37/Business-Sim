@@ -10,21 +10,21 @@ namespace Business_Sim
             bool isRunning = true;
             while (isRunning)
             {
-                Console.Write("-BUSINESS SIM-\n1.New business\n2.Load business\n" +
-                    "3.Business help\n4.Quit\n");
-                char userInput = Console.ReadKey(true).KeyChar;
-                switch (userInput)
+                Console.Write("-BUSINESS SIM-\n1-New business\n2-Load business\n" +
+                    "3-Business help\n4-Quit\n");
+                switch (Console.ReadKey(true).KeyChar)
                 {
                     case '1':
                         Console.Write("What difficulty?\n1-vEasy\n2-Easy\n3-Normal\n4-Hard\n5-vHard\n6-Extreme\n");
                         Game.difficulty difficultyInput = Game.difficulty.Unknown;
-                        switch (Console.ReadKey().KeyChar)
+                        bool invalidInput = false;
+                        switch (Console.ReadKey(true).KeyChar)
                         {
                             case '1':
                                 difficultyInput = Game.difficulty.vEasy;
                                 break;
                             case '2':
-                                difficultyInput = Game.difficulty.Easy; ;
+                                difficultyInput = Game.difficulty.Easy;
                                 break;
                             case '3':
                                 difficultyInput = Game.difficulty.Normal;
@@ -39,7 +39,13 @@ namespace Business_Sim
                                 difficultyInput = Game.difficulty.Extreme;
                                 break;
                             default:
+                                Console.WriteLine("Invalid input");
+                                invalidInput = true;
                                 break;
+                        }
+                        if (invalidInput)
+                        {
+                            break;
                         }
                         currentGame = new Game(difficultyInput);
                         currentGame.StartGame();
@@ -47,10 +53,10 @@ namespace Business_Sim
                         GameMenu();
                         break;
                     case '2':
-                        //Load save file function
+                        //TODO: Load save file function
                         break;
                     case '3':
-                        //Help menu function
+                        //TODO: Help menu function
                         break;
                     case '4':
                         Console.WriteLine("Goodbye");
@@ -66,8 +72,30 @@ namespace Business_Sim
 
         private void GameMenu()
         {
-            Console.Write("-Business Sim-\nCurrent date:" + DateTime.Today.ToShortDateString() + "\nCurrent cash:" + currentGame.cash + "\n");
-            Console.ReadKey();
+            bool inGame = true;
+            while (inGame)
+            {
+                Console.Write("-Business Sim-\nDate:" + currentGame.currentDate.ToShortDateString() + "\nCash:" + currentGame.cash + "\n");
+                Console.Write("1-Properties\n2-Employees\n3-Next day\n4-Exit to main menu\n");
+                switch (Console.ReadKey(true).KeyChar)
+                {
+                    case '1':
+                        //TODO: Properties menu
+                        break;
+                    case '2':
+                        //TODO: Employees menu
+                        break;
+                    case '3':
+                        //TODO: Calculate costs and profits for day
+                        break;
+                    case '4':
+                        inGame = false;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid input");
+                        break;
+                }
+            }
         }
     }
 }

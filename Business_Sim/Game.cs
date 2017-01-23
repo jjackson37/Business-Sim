@@ -6,7 +6,8 @@ namespace Business_Sim
     {
         protected difficulty gameDifficulty;
         public int cash { get; protected set; }
-        protected DateTime startDate;
+        public DateTime startDate { get; private set; }
+        public DateTime currentDate { get; protected set; }
 
         public enum difficulty
         {
@@ -50,6 +51,7 @@ namespace Business_Sim
                     break;
             }
             startDate = DateTime.Today.Date;
+            currentDate = startDate;
         }
     }
 }
