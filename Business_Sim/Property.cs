@@ -2,38 +2,63 @@
 {
     class Property
     {
-        public enum PropertyType
+        public Asset.PropertyType propertyType { get;}
+        public decimal income { get; private set;}
+        public decimal outcome { get; private set;}
+        public byte upgradeLevel
         {
-            Unknown = 0,
-            Flat = 1,
-            FlatBlock = 2,
-            House = 3,
-            Shop = 4,
-            ShoppingCentre = 5,
-            Office = 6,
-            OfficeBlock = 7,
-            SkyScraper = 8
+            get { return upgradeLevel;}
+            set
+            {
+                upgradeLevel = upgradeLevel;
+                income = income * upgradeLevel;
+                outcome = outcome * upgradeLevel;
+            }
         }
 
-        public void BuyProperty(PropertyType typeToBuy)
+        public Property(Asset.PropertyType propertyType)
         {
-            //TODO
+            this.propertyType = propertyType;
+            upgradeLevel = 1;
+            switch (propertyType)
+            {
+                case Asset.PropertyType.Flat:
+                    income = 10.00M;
+                    outcome = 2.00M;
+                    break;
+                case Asset.PropertyType.FlatBlock:
+                    income = 100.00M;
+                    outcome = 20.00M;
+                    break;
+                case Asset.PropertyType.House:
+                    income = 20.00M;
+                    outcome = 4.00M;
+                    break;
+                case Asset.PropertyType.Shop:
+                    income = 50.00M;
+                    outcome = 15.00M;
+                    break;
+                case Asset.PropertyType.ShoppingCentre:
+                    income = 500.00M;
+                    outcome = 150.00M;
+                    break;
+                case Asset.PropertyType.Office:
+                    income = 150.00M;
+                    outcome = 50.00M;
+                    break;
+                case Asset.PropertyType.OfficeBlock:
+                    income = 1500.00M;
+                    outcome = 500.00M;
+                    break;
+                case Asset.PropertyType.SkyScraper:
+                    income = 2500.00M;
+                    outcome = 750.00M;
+                    break;
+                default:
+                    income = 0;
+                    outcome = 0;
+                    break;
+            }
         }
-
-        public void SellProperty()
-        {
-            //TODO
-        }
-
-        public void UpgradeProperty()
-        {
-            //TODO
-        }
-
-        public void ViewProperties()
-        {
-            //TODO
-        }
-
     }
 }

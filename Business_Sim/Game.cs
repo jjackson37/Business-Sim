@@ -4,7 +4,7 @@ namespace Business_Sim
 {
     class Game
     {
-        public Property gameProperties;
+        public Asset gameProperties;
         protected Difficulty gameDifficulty;
         public int cash { get; protected set; }
         public DateTime startDate { get; private set; }
@@ -53,7 +53,7 @@ namespace Business_Sim
             }
             startDate = DateTime.Today.Date;
             currentDate = startDate;
-            gameProperties = new Property();
+            gameProperties = new Asset();
         }
     }
 }

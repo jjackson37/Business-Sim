@@ -112,32 +112,32 @@ namespace Business_Sim
                 case '1':
                     Console.Write("        -Buy\n        1-Flat\n        2-Flat Block\n        3-House\n        4-Office\n"
                         + "        5-Office block\n        6-Shop\n        7-Shopping centre\n        8-Sky scraper\n");
-                    Property.PropertyType propertyTypeToBuy = Property.PropertyType.Unknown;
+                    Asset.PropertyType propertyTypeToBuy = Asset.PropertyType.Unknown;
                     switch (Console.ReadKey(true).KeyChar)
                     {
                         case '1':
-                            propertyTypeToBuy = Property.PropertyType.Flat;
+                            propertyTypeToBuy = Asset.PropertyType.Flat;
                             break;
                         case '2':
-                            propertyTypeToBuy = Property.PropertyType.FlatBlock;
+                            propertyTypeToBuy = Asset.PropertyType.FlatBlock;
                             break;
                         case '3':
-                            propertyTypeToBuy = Property.PropertyType.House;
+                            propertyTypeToBuy = Asset.PropertyType.House;
                             break;
                         case '4':
-                            propertyTypeToBuy = Property.PropertyType.Office;
+                            propertyTypeToBuy = Asset.PropertyType.Office;
                             break;
                         case '5':
-                            propertyTypeToBuy = Property.PropertyType.OfficeBlock;
+                            propertyTypeToBuy = Asset.PropertyType.OfficeBlock;
                             break;
                         case '6':
-                            propertyTypeToBuy = Property.PropertyType.Shop;
+                            propertyTypeToBuy = Asset.PropertyType.Shop;
                             break;
                         case '7':
-                            propertyTypeToBuy = Property.PropertyType.ShoppingCentre;
+                            propertyTypeToBuy = Asset.PropertyType.ShoppingCentre;
                             break;
                         case '8':
-                            propertyTypeToBuy = Property.PropertyType.SkyScraper;
+                            propertyTypeToBuy = Asset.PropertyType.SkyScraper;
                             break;
                         default:
                             Console.WriteLine("        Invalid input");
@@ -145,16 +145,16 @@ namespace Business_Sim
                             Console.Clear();
                             break;
                     }
-                    if (propertyTypeToBuy != Property.PropertyType.Unknown)
+                    if (propertyTypeToBuy != Asset.PropertyType.Unknown)
                     {
-                        currentGame.gameProperties.BuyProperty(propertyTypeToBuy); //TODO
+                        currentGame.gameProperties.Add(propertyTypeToBuy); //TODO
                     }
                     break;
                 case '2':
-                    currentGame.gameProperties.SellProperty(); //TODO
+                    currentGame.gameProperties.Remove(); //TODO
                     break;
                 case '3':
-                    currentGame.gameProperties.UpgradeProperty(); //TODO
+                    currentGame.gameProperties.Upgrade(); //TODO
                     break;
                 case '4':
                     currentGame.gameProperties.ViewProperties(); //TODO
