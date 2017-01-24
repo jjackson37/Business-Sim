@@ -6,20 +6,20 @@ namespace Business_Sim
     class Asset
     {
 
-        List<Property> ownedProperties = new List<Property>();
+        List<Building> ownedBuildings = new List<Building>();
 
         public enum EmployeeRank
         {
             Unknown = 0
         }
 
-        public decimal Add(Property propertyToBuy, decimal currentCash)
+        public decimal Add(Building buildingToBuy, decimal currentCash)
         {
-            if (currentCash > propertyToBuy.buyCost)
+            if (currentCash > buildingToBuy.buyPrice)
             {
-                currentCash -= propertyToBuy.buyCost;
-                ownedProperties.Add(propertyToBuy);
-                Console.WriteLine(propertyToBuy.propertyTypeString + " Purchased successfully");
+                currentCash -= buildingToBuy.buyPrice;
+                ownedBuildings.Add(buildingToBuy);
+                Console.WriteLine(buildingToBuy.buildingTypeString + " Purchased successfully");
                 Console.ReadKey(true);
                 Console.Clear();
             }
@@ -47,14 +47,14 @@ namespace Business_Sim
             //TODO
         }
 
-        public void ViewProperties()
+        public void ViewBuildings()
         {
-            if (ownedProperties.Count != 0)
+            if (ownedBuildings.Count != 0)
             {
-                foreach (Property currentProperty in ownedProperties)
+                foreach (Building currentBuilding in ownedBuildings)
                 {
-                    Console.WriteLine(string.Format("Lvl {0} {1} - Income {2} - Outcome {3}", currentProperty.upgradeLevel, currentProperty.propertyTypeString,
-                        currentProperty.income, currentProperty.outcome));
+                    Console.WriteLine(string.Format("Lvl {0} {1} - Income {2} - Outcome {3}", currentBuilding.upgradeLevel, currentBuilding.buildingTypeString,
+                        currentBuilding.dailyIncome, currentBuilding.dailyOutcome));
                 }
                 Console.ReadKey(true);
                 Console.Clear();

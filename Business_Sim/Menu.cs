@@ -83,7 +83,7 @@ namespace Business_Sim
                 switch (Console.ReadKey(true).KeyChar)
                 {
                     case '1':
-                        PropertiesMenu();
+                        BuildingsMenu();
                         break;
                     case '2':
                         EmployeesMenu(); //TODO
@@ -104,7 +104,7 @@ namespace Business_Sim
             }
         }
 
-        private void PropertiesMenu()
+        private void BuildingsMenu()
         {
             Console.Write("    -Properties-\n    1-Buy\n    2-Sell\n    3-Upgrade\n    4-View owned properties\n");
             switch (Console.ReadKey(true).KeyChar)
@@ -113,32 +113,32 @@ namespace Business_Sim
                     Console.Write("        -Buy\n        1-Flat\n        2-Flat Block\n        3-House\n        4-Office\n"
                         + "        5-Office block\n        6-Shop\n        7-Shopping centre\n        8-Sky scraper\n");
                     
-                    Property.PropertyType propertyTypeToBuy = Property.PropertyType.Unknown;
+                    Building.BuildingType buildingTypeToBuy = Building.BuildingType.Unknown;
                     switch (Console.ReadKey(true).KeyChar)
                     {
                         case '1':
-                            propertyTypeToBuy = Property.PropertyType.Flat;
+                            buildingTypeToBuy = Building.BuildingType.Flat;
                             break;
                         case '2':
-                            propertyTypeToBuy = Property.PropertyType.FlatBlock;
+                            buildingTypeToBuy = Building.BuildingType.FlatBlock;
                             break;
                         case '3':
-                            propertyTypeToBuy = Property.PropertyType.House;
+                            buildingTypeToBuy = Building.BuildingType.House;
                             break;
                         case '4':
-                            propertyTypeToBuy = Property.PropertyType.Office;
+                            buildingTypeToBuy = Building.BuildingType.Office;
                             break;
                         case '5':
-                            propertyTypeToBuy = Property.PropertyType.OfficeBlock;
+                            buildingTypeToBuy = Building.BuildingType.OfficeBlock;
                             break;
                         case '6':
-                            propertyTypeToBuy = Property.PropertyType.Shop;
+                            buildingTypeToBuy = Building.BuildingType.Shop;
                             break;
                         case '7':
-                            propertyTypeToBuy = Property.PropertyType.ShoppingCentre;
+                            buildingTypeToBuy = Building.BuildingType.ShoppingCentre;
                             break;
                         case '8':
-                            propertyTypeToBuy = Property.PropertyType.SkyScraper;
+                            buildingTypeToBuy = Building.BuildingType.SkyScraper;
                             break;
                         default:
                             Console.WriteLine("        Invalid input");
@@ -146,10 +146,10 @@ namespace Business_Sim
                             Console.Clear();
                             break;
                     }
-                    if (propertyTypeToBuy != Property.PropertyType.Unknown)
+                    if (buildingTypeToBuy != Building.BuildingType.Unknown)
                     {
-                        Property buyingProperty = new Property(propertyTypeToBuy);
-                        currentGame.cash = currentGame.gameAssets.Add(buyingProperty, currentGame.cash);
+                        Building buyingBuilding = new Building(buildingTypeToBuy);
+                        currentGame.cash = currentGame.gameAssets.Add(buyingBuilding, currentGame.cash);
                     }
                     break;
                 case '2':
@@ -159,7 +159,7 @@ namespace Business_Sim
                     currentGame.gameAssets.Upgrade(); //TODO
                     break;
                 case '4':
-                    currentGame.gameAssets.ViewProperties(); //TODO
+                    currentGame.gameAssets.ViewBuildings(); //TODO
                     break;
                 default:
                     Console.WriteLine("    Invalid input");
