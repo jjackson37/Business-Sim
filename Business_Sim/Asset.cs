@@ -3,10 +3,9 @@ using System.Collections.Generic;
 
 namespace Business_Sim
 {
-    class Asset
+    internal class Asset
     {
-
-        List<Building> ownedBuildings = new List<Building>();
+        private List<Building> ownedBuildings = new List<Building>();
 
         public enum EmployeeRank
         {
@@ -15,17 +14,17 @@ namespace Business_Sim
 
         public decimal Add(Building buildingToBuy, decimal currentCash)
         {
-            if (currentCash > buildingToBuy.buyPrice)
+            if (currentCash >= buildingToBuy.buyPrice)
             {
                 currentCash -= buildingToBuy.buyPrice;
                 ownedBuildings.Add(buildingToBuy);
-                Console.WriteLine(buildingToBuy.buildingTypeString + " Purchased successfully");
+                Console.WriteLine("        " + buildingToBuy.buildingTypeString + " Purchased successfully");
                 Console.ReadKey(true);
                 Console.Clear();
             }
             else
             {
-                Console.WriteLine("Insufficient cash");
+                Console.WriteLine("        Insufficient cash");
                 Console.ReadKey(true);
                 Console.Clear();
             }
@@ -36,6 +35,21 @@ namespace Business_Sim
         //{
         //  TODO
         //}
+
+        public Building Find(Building.BuildingType buildingType)
+        {
+            Building returnBuilding = null;
+            foreach (Building currentBuilding in ownedBuildings)
+            {
+                if (currentBuilding.buildingType.Equals(buildingType))
+                {
+                    Console.WriteLine(string.Format("    {4} - Lvl {0} {1} - Daily income {2} - Daily outcome {3}", currentBuilding.upgradeLevel,
+                        currentBuilding.buildingTypeString, currentBuilding.dailyIncome, currentBuilding.dailyOutcome, ownedBuildings.FindIndex(currentBuilding.Equals)));
+                }
+            }
+            Console.WriteLine("    Select property");
+            return returnBuilding;
+        }
 
         public void Remove()
         {
@@ -53,15 +67,15 @@ namespace Business_Sim
             {
                 foreach (Building currentBuilding in ownedBuildings)
                 {
-                    Console.WriteLine(string.Format("Lvl {0} {1} - Income {2} - Outcome {3}", currentBuilding.upgradeLevel, currentBuilding.buildingTypeString,
-                        currentBuilding.dailyIncome, currentBuilding.dailyOutcome));
+                    Console.WriteLine(string.Format("    Lvl {0} {1} - Daily income {2} - Daily outcome {3}", currentBuilding.upgradeLevel,
+                        currentBuilding.buildingTypeString, currentBuilding.dailyIncome, currentBuilding.dailyOutcome));
                 }
                 Console.ReadKey(true);
                 Console.Clear();
             }
             else
             {
-                Console.WriteLine("None owned");
+                Console.WriteLine("    None owned");
                 Console.ReadKey(true);
                 Console.Clear();
             }
@@ -71,6 +85,5 @@ namespace Business_Sim
         {
             //TODO
         }
-
     }
 }

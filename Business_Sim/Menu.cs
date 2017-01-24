@@ -2,9 +2,9 @@
 
 namespace Business_Sim
 {
-    class Menu
+    internal class Menu
     {
-        Game currentGame;
+        private Game currentGame;
 
         public void MainMenuSelection()
         {
@@ -23,21 +23,27 @@ namespace Business_Sim
                             case '1':
                                 difficultyInput = Game.Difficulty.vEasy;
                                 break;
+
                             case '2':
                                 difficultyInput = Game.Difficulty.Easy;
                                 break;
+
                             case '3':
                                 difficultyInput = Game.Difficulty.Normal;
                                 break;
+
                             case '4':
                                 difficultyInput = Game.Difficulty.Hard;
                                 break;
+
                             case '5':
                                 difficultyInput = Game.Difficulty.vHard;
                                 break;
+
                             case '6':
                                 difficultyInput = Game.Difficulty.Extreme;
                                 break;
+
                             default:
                                 Console.WriteLine("Invalid input");
                                 Console.ReadKey(true);
@@ -52,49 +58,22 @@ namespace Business_Sim
                             GameMenu();
                         }
                         break;
+
                     case '2':
                         //TODO: Load save file function
                         break;
+
                     case '3':
                         //TODO: Help menu function
                         break;
+
                     case '4':
                         Console.WriteLine("Goodbye");
                         Console.ReadKey(true);
                         Console.Clear();
                         isRunning = false;
                         break;
-                    default:
-                        Console.WriteLine("Invalid input");
-                        Console.ReadKey(true);
-                        Console.Clear();
-                        break;
-                }
-            }
-        }
 
-        private void GameMenu()
-        {
-            bool inGame = true;
-            while (inGame)
-            {
-                Console.Write("-Business Sim-\nDate:" + currentGame.currentDate.ToShortDateString() + "\nCash:" + currentGame.cash + "\n");
-                Console.Write("1-Properties\n2-Employees\n3-Next day\n4-Exit to main menu\n");
-                switch (Console.ReadKey(true).KeyChar)
-                {
-                    case '1':
-                        BuildingsMenu();
-                        break;
-                    case '2':
-                        EmployeesMenu(); //TODO
-                        break;
-                    case '3':
-                        //TODO: Calculate costs and profits for day
-                        break;
-                    case '4':
-                        inGame = false;
-                        Console.Clear();
-                        break;
                     default:
                         Console.WriteLine("Invalid input");
                         Console.ReadKey(true);
@@ -110,36 +89,44 @@ namespace Business_Sim
             switch (Console.ReadKey(true).KeyChar)
             {
                 case '1':
-                    Console.Write("        -Buy\n        1-Flat\n        2-Flat Block\n        3-House\n        4-Office\n"
-                        + "        5-Office block\n        6-Shop\n        7-Shopping centre\n        8-Sky scraper\n");
-                    
+                    Console.Write("        -Buy\n        1-Flat (1000)\n        2-House (2000)\n        3-Shop (5000)\n        4-Flat Block (10000)\n"
+                        + "        5-Office (15000)\n        6-Shopping centre (50000)\n        7-Office block (150000)\n        8-Sky scraper (250000)\n");
+
                     Building.BuildingType buildingTypeToBuy = Building.BuildingType.Unknown;
                     switch (Console.ReadKey(true).KeyChar)
                     {
                         case '1':
                             buildingTypeToBuy = Building.BuildingType.Flat;
                             break;
+
                         case '2':
-                            buildingTypeToBuy = Building.BuildingType.FlatBlock;
-                            break;
-                        case '3':
                             buildingTypeToBuy = Building.BuildingType.House;
                             break;
-                        case '4':
-                            buildingTypeToBuy = Building.BuildingType.Office;
-                            break;
-                        case '5':
-                            buildingTypeToBuy = Building.BuildingType.OfficeBlock;
-                            break;
-                        case '6':
+
+                        case '3':
                             buildingTypeToBuy = Building.BuildingType.Shop;
                             break;
-                        case '7':
+
+                        case '4':
+                            buildingTypeToBuy = Building.BuildingType.FlatBlock;
+                            break;
+
+                        case '5':
+                            buildingTypeToBuy = Building.BuildingType.Office;
+                            break;
+
+                        case '6':
                             buildingTypeToBuy = Building.BuildingType.ShoppingCentre;
                             break;
+
+                        case '7':
+                            buildingTypeToBuy = Building.BuildingType.OfficeBlock;
+                            break;
+
                         case '8':
                             buildingTypeToBuy = Building.BuildingType.SkyScraper;
                             break;
+
                         default:
                             Console.WriteLine("        Invalid input");
                             Console.ReadKey(true);
@@ -152,15 +139,19 @@ namespace Business_Sim
                         currentGame.cash = currentGame.gameAssets.Add(buyingBuilding, currentGame.cash);
                     }
                     break;
+
                 case '2':
                     currentGame.gameAssets.Remove(); //TODO
                     break;
+
                 case '3':
                     currentGame.gameAssets.Upgrade(); //TODO
                     break;
+
                 case '4':
                     currentGame.gameAssets.ViewBuildings(); //TODO
                     break;
+
                 default:
                     Console.WriteLine("    Invalid input");
                     Console.ReadKey(true);
@@ -174,5 +165,39 @@ namespace Business_Sim
             //TODO
         }
 
+        private void GameMenu()
+        {
+            bool inGame = true;
+            while (inGame)
+            {
+                Console.Write("-Business Sim-\nDate:" + currentGame.currentDate.ToShortDateString() + "\nCash:" + currentGame.cash + "\n");
+                Console.Write("1-Properties\n2-Employees\n3-Next day\n4-Exit to main menu\n");
+                switch (Console.ReadKey(true).KeyChar)
+                {
+                    case '1':
+                        BuildingsMenu();
+                        break;
+
+                    case '2':
+                        EmployeesMenu(); //TODO
+                        break;
+
+                    case '3':
+                        //TODO: Calculate costs and profits for day
+                        break;
+
+                    case '4':
+                        inGame = false;
+                        Console.Clear();
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid input");
+                        Console.ReadKey(true);
+                        Console.Clear();
+                        break;
+                }
+            }
+        }
     }
 }

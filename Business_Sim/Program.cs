@@ -1,11 +1,11 @@
 ﻿namespace Business_Sim
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-             Menu mainMenu = new Menu();
-             mainMenu.MainMenuSelection();
+            Menu mainMenu = new Menu();
+            mainMenu.MainMenuSelection();
         }
     }
 }
