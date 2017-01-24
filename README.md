@@ -2,7 +2,6 @@
 
 *Console based business simulator game*
 
-
 |Branch|Build status|
 |---|---|
 |v1.0|[![Build Status](https://travis-ci.org/jjackson37/Business-Sim.svg?branch=v1.0)](https://travis-ci.org/jjackson37/Business-Sim)|
@@ -10,14 +9,13 @@
 
 ## Completed features
 
-`¯\_(o_o)_/¯` None as of yet
-
-
+- Properties
+  - Buying properties.
 
 ## Planned features
 
 - Properties
-  - Buy and sell properties.
+  - Sell properties.
   - Properties will have types such as houses that you rent out or shops that sell goods.
   - Upgradable to gather more income / have less costs.
 - Employees
@@ -25,6 +23,5 @@
   - Keep employees by changing company policies such as salary and total holidays.
   - Manage employee ranks e.g. give promotions and demotions.
 - Date system
-  - Each new day total profit is calculated based on costs and income
-.
+  - Each new day total profit is calculated based on costs and income.
   - Random events that effect profit e.g. less customers or delivery problem with goods.
