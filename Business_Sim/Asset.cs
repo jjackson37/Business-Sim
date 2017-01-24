@@ -1,34 +1,41 @@
-﻿namespace Business_Sim
+﻿using System;
+using System.Collections.Generic;
+
+namespace Business_Sim
 {
     class Asset
     {
-        public enum PropertyType
-        {
-            Unknown = 0,
-            Flat = 1,
-            FlatBlock = 2,
-            House = 3,
-            Shop = 4,
-            ShoppingCentre = 5,
-            Office = 6,
-            OfficeBlock = 7,
-            SkyScraper = 8
-        }
+
+        List<Property> ownedProperties = new List<Property>();
 
         public enum EmployeeRank
         {
             Unknown = 0
         }
 
-        public void Add(PropertyType typeToBuy)
+        public decimal Add(Property propertyToBuy, decimal currentCash)
         {
-            //TODO
+            if (currentCash > propertyToBuy.buyCost)
+            {
+                currentCash -= propertyToBuy.buyCost;
+                ownedProperties.Add(propertyToBuy);
+                Console.WriteLine(propertyToBuy.propertyTypeString + " Purchased successfully");
+                Console.ReadKey(true);
+                Console.Clear();
+            }
+            else
+            {
+                Console.WriteLine("Insufficient cash");
+                Console.ReadKey(true);
+                Console.Clear();
+            }
+            return currentCash;
         }
 
-        public void Add(EmployeeRank rankToHire)
-        {
-            //TODO
-        }
+        //public void Add(Employee rankToHire)
+        //{
+        //  TODO
+        //}
 
         public void Remove()
         {
@@ -42,7 +49,22 @@
 
         public void ViewProperties()
         {
-            //TODO
+            if (ownedProperties.Count != 0)
+            {
+                foreach (Property currentProperty in ownedProperties)
+                {
+                    Console.WriteLine(string.Format("Lvl {0} {1} - Income {2} - Outcome {3}", currentProperty.upgradeLevel, currentProperty.propertyTypeString,
+                        currentProperty.income, currentProperty.outcome));
+                }
+                Console.ReadKey(true);
+                Console.Clear();
+            }
+            else
+            {
+                Console.WriteLine("None owned");
+                Console.ReadKey(true);
+                Console.Clear();
+            }
         }
 
         public void ViewEmployees()
