@@ -2,20 +2,20 @@
 
 *Console based business simulator game*
 
-|Branch|Build status|
-|---|---|
-|v1.0|[![Build Status](https://travis-ci.org/jjackson37/Business-Sim.svg?branch=v1.0)](https://travis-ci.org/jjackson37/Business-Sim)|
-|v1.0_dev|[![Build Status](https://travis-ci.org/jjackson37/Business-Sim.svg?branch=v1.0_dev)](https://travis-ci.org/jjackson37/Business-Sim)|
+|Branch  |Build status                                                                                                                        |
+|--------|------------------------------------------------------------------------------------------------------------------------------------|
+|v1.0    |[![Build Status](https://travis-ci.org/jjackson37/Business-Sim.svg?branch=v1.0)](https://travis-ci.org/jjackson37/Business-Sim)     |
+|v1.0_dev|[![Build Status](https://travis-ci.org/jjackson37/Business-Sim.svg?branch=v1.0_dev)](https://travis-ci.org/jjackson37/Business-Sim) |
 
 ## Completed features
 
 - Properties
   - Buying properties.
+  - Sell properties.
 
 ## Planned features
 
 - Properties
-  - Sell properties.
   - Properties will have types such as houses that you rent out or shops that sell goods.
   - Upgradable to gather more income / have less costs.
 - Employees

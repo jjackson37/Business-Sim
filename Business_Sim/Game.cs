@@ -27,6 +27,9 @@ namespace Business_Sim
         public DateTime currentDate { get; set; }
         public DateTime startDate { get; private set; }
 
+        /// <summary>
+        /// Sets starting properties depending on game difficulty
+        /// </summary>
         public void StartGame()
         {
             switch (gameDifficulty)

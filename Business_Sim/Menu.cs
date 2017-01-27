@@ -89,50 +89,10 @@ namespace Business_Sim
             switch (Console.ReadKey(true).KeyChar)
             {
                 case '1':
-                    Console.Write("        -Buy\n        1-Flat (1000)\n        2-House (2000)\n        3-Shop (5000)\n        4-Flat Block (10000)\n"
+                    Console.Write("        -Buy-\n        1-Flat (1000)\n        2-House (2000)\n        3-Shop (5000)\n        4-Flat Block (10000)\n"
                         + "        5-Office (15000)\n        6-Shopping centre (50000)\n        7-Office block (150000)\n        8-Sky scraper (250000)\n");
 
-                    Building.BuildingType buildingTypeToBuy = Building.BuildingType.Unknown;
-                    switch (Console.ReadKey(true).KeyChar)
-                    {
-                        case '1':
-                            buildingTypeToBuy = Building.BuildingType.Flat;
-                            break;
-
-                        case '2':
-                            buildingTypeToBuy = Building.BuildingType.House;
-                            break;
-
-                        case '3':
-                            buildingTypeToBuy = Building.BuildingType.Shop;
-                            break;
-
-                        case '4':
-                            buildingTypeToBuy = Building.BuildingType.FlatBlock;
-                            break;
-
-                        case '5':
-                            buildingTypeToBuy = Building.BuildingType.Office;
-                            break;
-
-                        case '6':
-                            buildingTypeToBuy = Building.BuildingType.ShoppingCentre;
-                            break;
-
-                        case '7':
-                            buildingTypeToBuy = Building.BuildingType.OfficeBlock;
-                            break;
-
-                        case '8':
-                            buildingTypeToBuy = Building.BuildingType.SkyScraper;
-                            break;
-
-                        default:
-                            Console.WriteLine("        Invalid input");
-                            Console.ReadKey(true);
-                            Console.Clear();
-                            break;
-                    }
+                    Building.BuildingType buildingTypeToBuy = SelectBuildingType(2);
                     if (buildingTypeToBuy != Building.BuildingType.Unknown)
                     {
                         Building buyingBuilding = new Building(buildingTypeToBuy);
@@ -141,7 +101,14 @@ namespace Business_Sim
                     break;
 
                 case '2':
-                    currentGame.gameAssets.Remove(); //TODO
+                    Console.Write("        -Sell-\n        1-Flat\n        2-House\n        3-Shop\n        4-Flat Block\n"
+                        + "        5-Office\n        6-Shopping centre\n        7-Office block\n        8-Sky scraper\n");
+                    Building.BuildingType buildingTypeToSell = SelectBuildingType(2);
+                    Building buildingToSell = currentGame.gameAssets.Find(buildingTypeToSell);
+                    if (buildingToSell != null)
+                    {
+                        currentGame.cash += currentGame.gameAssets.Remove(buildingToSell);
+                    }
                     break;
 
                 case '3':
@@ -158,6 +125,57 @@ namespace Business_Sim
                     Console.Clear();
                     break;
             }
+        }
+
+        private Building.BuildingType SelectBuildingType(int indentSize)
+        {
+            string indent = "";
+            for (int i = 0; i != indentSize; i++)
+            {
+                indent += "    ";
+            }
+            Building.BuildingType returnValue = Building.BuildingType.Unknown;
+            switch (Console.ReadKey(true).KeyChar)
+            {
+                case '1':
+                    returnValue = Building.BuildingType.Flat;
+                    break;
+
+                case '2':
+                    returnValue = Building.BuildingType.House;
+                    break;
+
+                case '3':
+                    returnValue = Building.BuildingType.Shop;
+                    break;
+
+                case '4':
+                    returnValue = Building.BuildingType.FlatBlock;
+                    break;
+
+                case '5':
+                    returnValue = Building.BuildingType.Office;
+                    break;
+
+                case '6':
+                    returnValue = Building.BuildingType.ShoppingCentre;
+                    break;
+
+                case '7':
+                    returnValue = Building.BuildingType.OfficeBlock;
+                    break;
+
+                case '8':
+                    returnValue = Building.BuildingType.SkyScraper;
+                    break;
+
+                default:
+                    Console.WriteLine(indent+"Invalid input");
+                    Console.ReadKey(true);
+                    Console.Clear();
+                    break;
+            }
+            return returnValue;
         }
 
         private void EmployeesMenu()
