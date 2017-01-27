@@ -7,19 +7,16 @@ namespace Business_Sim
     /// </summary>
     internal class Menu
     {
+        #region Fields
+
         /// <summary>
         /// Currently loaded game
         /// </summary>
         private Game currentGame;
 
-        /// <summary>
-        /// Clears console after the user presses a key
-        /// </summary>
-        public void PressKeyAndClear()
-        {
-            Console.ReadKey(true);
-            Console.Clear();
-        }
+        #endregion Fields
+
+        #region Methods
 
         /// <summary>
         /// Prints main menu selection into console for the user and calls game functions depending on user input
@@ -102,6 +99,15 @@ namespace Business_Sim
         }
 
         /// <summary>
+        /// Clears console after the user presses a key
+        /// </summary>
+        public void PressKeyAndClear()
+        {
+            Console.ReadKey(true);
+            Console.Clear();
+        }
+
+        /// <summary>
         /// Prints buildings menu and calls buildings functions depending on user input
         /// </summary>
         private void BuildingsMenu()
@@ -152,6 +158,54 @@ namespace Business_Sim
                     Console.WriteLine("    Invalid input");
                     PressKeyAndClear();
                     break;
+            }
+        }
+
+        /// <summary>
+        /// TODO
+        /// </summary>
+        private void EmployeesMenu()
+        {
+            Console.WriteLine("Amazing employee menu placeholder!");
+            PressKeyAndClear();
+        }
+
+        /// <summary>
+        /// Main menu, calls other menus depending on user input
+        /// </summary>
+        private void GameMenu()
+        {
+            bool inGame = true;
+            while (inGame)
+            {
+                Console.Write("-Business Sim-\nDate:" + currentGame.currentDate.ToShortDateString() + "\nCash:" + currentGame.cash + "\n");
+                Console.Write("1-Properties\n2-Employees\n3-Next day\n4-Exit to main menu\n");
+                switch (Console.ReadKey(true).KeyChar)
+                {
+                    case '1':
+                        BuildingsMenu();
+                        break;
+
+                    case '2':
+                        EmployeesMenu(); //TODO
+                        break;
+
+                    case '3':
+                        Console.WriteLine("The next day... jk placeholder");
+                        PressKeyAndClear();
+                        //TODO: Calculate costs and profits for day
+                        break;
+
+                    case '4':
+                        inGame = false;
+                        Console.Clear();
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid input");
+                        PressKeyAndClear();
+                        break;
+                }
             }
         }
 
@@ -210,52 +264,6 @@ namespace Business_Sim
             return returnValue;
         }
 
-        /// <summary>
-        /// TODO
-        /// </summary>
-        private void EmployeesMenu()
-        {
-            Console.WriteLine("Amazing employee menu placeholder!");
-            PressKeyAndClear();
-        }
-
-        /// <summary>
-        /// Main menu, calls other menus depending on user input
-        /// </summary>
-        private void GameMenu()
-        {
-            bool inGame = true;
-            while (inGame)
-            {
-                Console.Write("-Business Sim-\nDate:" + currentGame.currentDate.ToShortDateString() + "\nCash:" + currentGame.cash + "\n");
-                Console.Write("1-Properties\n2-Employees\n3-Next day\n4-Exit to main menu\n");
-                switch (Console.ReadKey(true).KeyChar)
-                {
-                    case '1':
-                        BuildingsMenu();
-                        break;
-
-                    case '2':
-                        EmployeesMenu(); //TODO
-                        break;
-
-                    case '3':
-                        Console.WriteLine("The next day... jk placeholder");
-                        PressKeyAndClear();
-                        //TODO: Calculate costs and profits for day
-                        break;
-
-                    case '4':
-                        inGame = false;
-                        Console.Clear();
-                        break;
-
-                    default:
-                        Console.WriteLine("Invalid input");
-                        PressKeyAndClear();
-                        break;
-                }
-            }
-        }
+        #endregion Methods
     }
 }

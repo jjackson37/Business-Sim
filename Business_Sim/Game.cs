@@ -7,6 +7,8 @@ namespace Business_Sim
     /// </summary>
     internal class Game
     {
+        #region Fields
+
         /// <summary>
         /// Buildings and employees
         /// </summary>
@@ -16,6 +18,10 @@ namespace Business_Sim
         /// Difficulty of the game
         /// </summary>
         protected Difficulty gameDifficulty;
+
+        #endregion Fields
+
+        #region Constructors
 
         /// <summary>
         /// Sets starting values of the game base on difficulty
@@ -58,6 +64,10 @@ namespace Business_Sim
             gameAssets = new Asset();
         }
 
+        #endregion Constructors
+
+        #region Enums
+
         /// <summary>
         /// Game difficulties
         /// </summary>
@@ -71,6 +81,10 @@ namespace Business_Sim
             vHard = 5,
             Extreme = 6
         }
+
+        #endregion Enums
+
+        #region Properties
 
         /// <summary>
         /// Current cash
@@ -86,5 +100,7 @@ namespace Business_Sim
         /// Game creation date
         /// </summary>
         public DateTime startDate { get; private set; }
+
+        #endregion Properties
     }
 }

@@ -8,15 +8,25 @@ namespace Business_Sim
     /// </summary>
     internal class Asset
     {
+        #region Fields
+
         /// <summary>
         /// List of owned buildings for the current game
         /// </summary>
         private List<Building> ownedBuildings = new List<Building>();
 
+        #endregion Fields
+
+        #region Enums
+
         public enum EmployeeRank
         {
             Unknown = 0
         }
+
+        #endregion Enums
+
+        #region Methods
 
         /// <summary>
         /// Adds a building to the owned buildings list and updates the current cash
@@ -80,7 +90,7 @@ namespace Business_Sim
                         returnBuilding = ownedBuildings[userInput];
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine("        " + ex.Message);
                 }
@@ -145,5 +155,7 @@ namespace Business_Sim
         {
             //TODO
         }
+
+        #endregion Methods
     }
 }

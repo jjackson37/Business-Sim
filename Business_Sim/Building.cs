@@ -5,7 +5,13 @@
     /// </summary>
     internal class Building
     {
+        #region Fields
+
         private int _upgradeLevel;
+
+        #endregion Fields
+
+        #region Constructors
 
         /// <summary>
         /// Sets all default properties of the building depending on the type being added
@@ -73,6 +79,10 @@
             upgradeLevel = 1;
         }
 
+        #endregion Constructors
+
+        #region Enums
+
         /// <summary>
         /// Building types
         /// </summary>
@@ -88,6 +98,10 @@
             OfficeBlock = 7,
             SkyScraper = 8
         }
+
+        #endregion Enums
+
+        #region Properties
 
         /// <summary>
         /// Building type of the building. Affects the base value for income, outcome, and buy/sell/upgrade price
@@ -180,5 +194,7 @@
         /// Price to increase the upgrade level of te building
         /// </summary>
         public decimal upgradePrice { get; private set; }
+
+        #endregion Properties
     }
 }
