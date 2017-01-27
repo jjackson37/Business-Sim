@@ -6,7 +6,7 @@
 
         private static void Main(string[] args)
         {
-            System.Console.WindowWidth = 100;
+            System.Console.WindowWidth = 125;
             Menu mainMenu = new Menu();
             mainMenu.MainMenuSelection();
         }

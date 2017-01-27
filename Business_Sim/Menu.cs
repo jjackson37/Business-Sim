@@ -144,9 +144,18 @@ namespace Business_Sim
                     break;
 
                 case '3':
-                    //currentGame.gameAssets.Upgrade(); TODO
-                    Console.WriteLine("    Amazing upgrade placeholder!");
-                    PressKeyAndClear();
+                    Console.Write("        -Upgrade-\n        1-Flat\n        2-House\n        3-Shop\n        4-Flat Block\n"
+                        + "        5-Office\n        6-Shopping centre\n        7-Office block\n        8-Sky scraper\n");
+                    Building.BuildingType buildingTypeToUpgrade = SelectBuildingType(2);
+                    if (!buildingTypeToUpgrade.Equals(Building.BuildingType.Unknown))
+                    {
+                        Building buildingToUpgrade = currentGame.gameAssets.Find(buildingTypeToUpgrade);
+                        if (buildingToUpgrade != null)
+                        {
+                            currentGame.cash = currentGame.gameAssets.Upgrade(buildingToUpgrade,currentGame.cash);
+                        }
+                        PressKeyAndClear();
+                    }
                     break;
 
                 case '4':

@@ -44,7 +44,7 @@ namespace Business_Sim
             }
             else
             {
-                Console.WriteLine("        Insufficient cash");
+                Console.WriteLine("        Insufficient funds");
             }
             return currentCash;
         }
@@ -73,8 +73,9 @@ namespace Business_Sim
                 {
                     if (currentBuilding.buildingType.Equals(buildingType))
                     {
-                        Console.WriteLine(string.Format("        {4} - Lvl {0} {1} - Daily income {2} - Daily outcome {3} - Sell price {5}", currentBuilding.upgradeLevel,
-                            currentBuilding.buildingTypeString, currentBuilding.dailyIncome, currentBuilding.dailyOutcome, ownedBuildings.FindIndex(currentBuilding.Equals), currentBuilding.sellPrice));
+                        Console.WriteLine(string.Format("        {4} - Lvl {0} {1} - Daily income {2} - Daily outcome {3} - Sell price {5} - Upgrade price {6}",
+                            currentBuilding.upgradeLevel, currentBuilding.buildingTypeString, currentBuilding.dailyIncome, currentBuilding.dailyOutcome,
+                            ownedBuildings.FindIndex(currentBuilding.Equals), currentBuilding.sellPrice, currentBuilding.upgradePrice));
                         foundAResult = true;
                     }
                 }
@@ -84,6 +85,7 @@ namespace Business_Sim
                 Console.WriteLine("        Select property");
                 try
                 {
+                    Console.Write("        ");
                     int userInput = int.Parse(Console.ReadLine());
                     if (ownedBuildings[userInput].buildingType.Equals(buildingType))
                     {
@@ -125,7 +127,27 @@ namespace Business_Sim
         /// <returns></returns>
         public decimal Upgrade(Building buildingToUpgrade, decimal currentCash)
         {
-            decimal newCash = currentCash - buildingToUpgrade.upgradePrice;
+            decimal newCash = currentCash;
+            if (currentCash >= buildingToUpgrade.upgradePrice)
+            {
+                if (buildingToUpgrade.upgradeLevel < 10)
+                {
+                    newCash -= buildingToUpgrade.upgradePrice;
+                    decimal oldUpgradePrice = buildingToUpgrade.upgradePrice;
+                    buildingToUpgrade.upgradeLevel++;
+                    Console.WriteLine(string.Format("        lvl {0} {1} upgraded to lvl {2} for {3}",
+                        buildingToUpgrade.upgradeLevel - 1, buildingToUpgrade.buildingTypeString, buildingToUpgrade.upgradeLevel,
+                        oldUpgradePrice));
+                }
+                else
+                {
+                    Console.WriteLine("        Upgrade level has already reached maximum");
+                }
+            }
+            else
+            {
+                Console.WriteLine("        Insufficient funds");
+            }
             return newCash;
         }
 
