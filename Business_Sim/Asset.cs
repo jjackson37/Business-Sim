@@ -53,10 +53,10 @@ namespace Business_Sim
         /// TODO
         /// </summary>
         /// <param name="rankToHire">Rank of employee to hire</param>
-        //public void Add(Employee rankToHire)
-        //{
-        //  TODO
-        //}
+        public void Add(EmployeeRank rankToHire)
+        {
+          //TODO
+        }
 
         /// <summary>
         /// Lists all owned buildings of a certain type and returns ones depending on user selection
@@ -120,11 +120,11 @@ namespace Business_Sim
         }
 
         /// <summary>
-        ///
+        /// Increases a buildings upgrade level by one
         /// </summary>
-        /// <param name="buildingToUpgrade"></param>
-        /// <param name="currentCash"></param>
-        /// <returns></returns>
+        /// <param name="buildingToUpgrade">Building to increase the upgrade level of</param>
+        /// <param name="currentCash">Current cash of the game</param>
+        /// <returns>New cash amount</returns>
         public decimal Upgrade(Building buildingToUpgrade, decimal currentCash)
         {
             decimal newCash = currentCash;
