@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Business_Sim
 {
+    /// <summary>
+    /// Buildings and employees
+    /// </summary>
     internal class Asset
     {
         /// <summary>
@@ -40,6 +43,10 @@ namespace Business_Sim
             return currentCash;
         }
 
+        /// <summary>
+        /// TODO
+        /// </summary>
+        /// <param name="rankToHire">Rank of employee to hire</param>
         //public void Add(Employee rankToHire)
         //{
         //  TODO
@@ -87,10 +94,13 @@ namespace Business_Sim
         public decimal Remove(Building buildingToSell)
         {
             ownedBuildings.Remove(buildingToSell);
-            Console.WriteLine(string.Format("        {0} sold for {1}" , buildingToSell.buildingTypeString, buildingToSell.sellPrice));
+            Console.WriteLine(string.Format("        {0} sold for {1}", buildingToSell.buildingTypeString, buildingToSell.sellPrice));
             return buildingToSell.sellPrice;
         }
 
+        /// <summary>
+        /// TODO
+        /// </summary>
         public void Upgrade()
         {
             //TODO
@@ -119,6 +129,9 @@ namespace Business_Sim
             }
         }
 
+        /// <summary>
+        /// TODO
+        /// </summary>
         public void ViewEmployees()
         {
             //TODO

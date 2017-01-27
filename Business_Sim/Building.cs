@@ -1,5 +1,8 @@
 ﻿namespace Business_Sim
 {
+    /// <summary>
+    /// Earns income and outcome per day for the player
+    /// </summary>
     internal class Building
     {
         private int _upgradeLevel;
@@ -70,6 +73,9 @@
             upgradeLevel = 1;
         }
 
+        /// <summary>
+        /// Building types
+        /// </summary>
         public enum BuildingType
         {
             Unknown = 0,
@@ -138,14 +144,17 @@
         /// Price to buy/add the building to the owned buildings list
         /// </summary>
         public decimal buyPrice { get; }
+
         /// <summary>
         /// Income building gives per game day
         /// </summary>
         public decimal dailyIncome { get; private set; }
+
         /// <summary>
         /// Outcome building takes per game day
         /// </summary>
         public decimal dailyOutcome { get; private set; }
+
         /// <summary>
         /// Amount of money gained if the building is sold/removed from the owned buildings list
         /// </summary>

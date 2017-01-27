@@ -2,10 +2,19 @@
 
 namespace Business_Sim
 {
+    /// <summary>
+    /// Console UI system
+    /// </summary>
     internal class Menu
     {
+        /// <summary>
+        /// Currently loaded game
+        /// </summary>
         private Game currentGame;
 
+        /// <summary>
+        /// Prints main menu selection into console for the user and calls game functions depending on user input
+        /// </summary>
         public void MainMenuSelection()
         {
             bool isRunning = true;
@@ -53,7 +62,6 @@ namespace Business_Sim
                         if (difficultyInput != Game.Difficulty.Unknown)
                         {
                             currentGame = new Game(difficultyInput);
-                            currentGame.StartGame();
                             Console.Clear();
                             GameMenu();
                         }
@@ -83,6 +91,9 @@ namespace Business_Sim
             }
         }
 
+        /// <summary>
+        /// Prints buildings menu and calls buildings functions depending on user input
+        /// </summary>
         private void BuildingsMenu()
         {
             Console.Write("    -Properties-\n    1-Buy\n    2-Sell\n    3-Upgrade\n    4-View owned properties\n");
@@ -127,6 +138,11 @@ namespace Business_Sim
             }
         }
 
+        /// <summary>
+        /// Gets user to select a building type
+        /// </summary>
+        /// <param name="indentSize">Number of indents for printed text</param>
+        /// <returns>Building type selected by user</returns>
         private Building.BuildingType SelectBuildingType(int indentSize)
         {
             string indent = "";
@@ -170,7 +186,7 @@ namespace Business_Sim
                     break;
 
                 default:
-                    Console.WriteLine(indent+"Invalid input");
+                    Console.WriteLine(indent + "Invalid input");
                     Console.ReadKey(true);
                     Console.Clear();
                     break;
@@ -178,11 +194,17 @@ namespace Business_Sim
             return returnValue;
         }
 
+        /// <summary>
+        /// TODO
+        /// </summary>
         private void EmployeesMenu()
         {
             //TODO
         }
 
+        /// <summary>
+        /// Main menu, calls other menus depending on user input
+        /// </summary>
         private void GameMenu()
         {
             bool inGame = true;

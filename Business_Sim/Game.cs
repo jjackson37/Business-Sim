@@ -2,37 +2,29 @@
 
 namespace Business_Sim
 {
+    /// <summary>
+    /// Stores information about a game
+    /// </summary>
     internal class Game
     {
+        /// <summary>
+        /// Buildings and employees
+        /// </summary>
         public Asset gameAssets;
+
+        /// <summary>
+        /// Difficulty of the game
+        /// </summary>
         protected Difficulty gameDifficulty;
 
+        /// <summary>
+        /// Sets starting values of the game base on difficulty
+        /// </summary>
+        /// <param name="gameDifficulty">Difficulty of the game</param>
         public Game(Difficulty gameDifficulty)
         {
             this.gameDifficulty = gameDifficulty;
-        }
-
-        public enum Difficulty
-        {
-            Unknown = 0,
-            vEasy = 1,
-            Easy = 2,
-            Normal = 3,
-            Hard = 4,
-            vHard = 5,
-            Extreme = 6
-        }
-
-        public decimal cash { get; set; }
-        public DateTime currentDate { get; set; }
-        public DateTime startDate { get; private set; }
-
-        /// <summary>
-        /// Sets starting properties depending on game difficulty
-        /// </summary>
-        public void StartGame()
-        {
-            switch (gameDifficulty)
+            switch (this.gameDifficulty)
             {
                 case Difficulty.vEasy:
                     cash = 7500.00M;
@@ -65,5 +57,34 @@ namespace Business_Sim
             currentDate = startDate;
             gameAssets = new Asset();
         }
+
+        /// <summary>
+        /// Game difficulties
+        /// </summary>
+        public enum Difficulty
+        {
+            Unknown = 0,
+            vEasy = 1,
+            Easy = 2,
+            Normal = 3,
+            Hard = 4,
+            vHard = 5,
+            Extreme = 6
+        }
+
+        /// <summary>
+        /// Current cash
+        /// </summary>
+        public decimal cash { get; set; }
+
+        /// <summary>
+        /// Ingame date
+        /// </summary>
+        public DateTime currentDate { get; set; }
+
+        /// <summary>
+        /// Game creation date
+        /// </summary>
+        public DateTime startDate { get; private set; }
     }
 }
