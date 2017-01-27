@@ -31,14 +31,10 @@ namespace Business_Sim
                 currentCash -= buildingToBuy.buyPrice;
                 ownedBuildings.Add(buildingToBuy);
                 Console.WriteLine("        " + buildingToBuy.buildingTypeString + " Purchased successfully");
-                Console.ReadKey(true);
-                Console.Clear();
             }
             else
             {
                 Console.WriteLine("        Insufficient cash");
-                Console.ReadKey(true);
-                Console.Clear();
             }
             return currentCash;
         }
@@ -61,22 +57,32 @@ namespace Business_Sim
         {
             Building returnBuilding = null;
             bool foundAResult = false;
-            foreach (Building currentBuilding in ownedBuildings)
+            if (ownedBuildings.Count != 0)
             {
-                if (currentBuilding.buildingType.Equals(buildingType))
+                foreach (Building currentBuilding in ownedBuildings)
                 {
-                    Console.WriteLine(string.Format("        {4} - Lvl {0} {1} - Daily income {2} - Daily outcome {3} - Sell price {5}", currentBuilding.upgradeLevel,
-                        currentBuilding.buildingTypeString, currentBuilding.dailyIncome, currentBuilding.dailyOutcome, ownedBuildings.FindIndex(currentBuilding.Equals), currentBuilding.sellPrice));
-                    foundAResult = true;
+                    if (currentBuilding.buildingType.Equals(buildingType))
+                    {
+                        Console.WriteLine(string.Format("        {4} - Lvl {0} {1} - Daily income {2} - Daily outcome {3} - Sell price {5}", currentBuilding.upgradeLevel,
+                            currentBuilding.buildingTypeString, currentBuilding.dailyIncome, currentBuilding.dailyOutcome, ownedBuildings.FindIndex(currentBuilding.Equals), currentBuilding.sellPrice));
+                        foundAResult = true;
+                    }
                 }
             }
             if (foundAResult)
             {
                 Console.WriteLine("        Select property");
-                int userInput = int.Parse(Console.ReadLine());
-                if (ownedBuildings[userInput].buildingType.Equals(buildingType))
+                try
                 {
-                    returnBuilding = ownedBuildings[userInput];
+                    int userInput = int.Parse(Console.ReadLine());
+                    if (ownedBuildings[userInput].buildingType.Equals(buildingType))
+                    {
+                        returnBuilding = ownedBuildings[userInput];
+                    }
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine("        " + ex.Message);
                 }
             }
             else
@@ -93,17 +99,24 @@ namespace Business_Sim
         /// <returns>Amount of cash gained for sale</returns>
         public decimal Remove(Building buildingToSell)
         {
-            ownedBuildings.Remove(buildingToSell);
-            Console.WriteLine(string.Format("        {0} sold for {1}", buildingToSell.buildingTypeString, buildingToSell.sellPrice));
+            if (!buildingToSell.Equals(null))
+            {
+                ownedBuildings.Remove(buildingToSell);
+                Console.WriteLine(string.Format("        {0} sold for {1}", buildingToSell.buildingTypeString, buildingToSell.sellPrice));
+            }
             return buildingToSell.sellPrice;
         }
 
         /// <summary>
-        /// TODO
+        ///
         /// </summary>
-        public void Upgrade()
+        /// <param name="buildingToUpgrade"></param>
+        /// <param name="currentCash"></param>
+        /// <returns></returns>
+        public decimal Upgrade(Building buildingToUpgrade, decimal currentCash)
         {
-            //TODO
+            decimal newCash = currentCash - buildingToUpgrade.upgradePrice;
+            return newCash;
         }
 
         /// <summary>
@@ -118,14 +131,10 @@ namespace Business_Sim
                     Console.WriteLine(string.Format("    Lvl {0} {1} - Daily income {2} - Daily outcome {3}", currentBuilding.upgradeLevel,
                         currentBuilding.buildingTypeString, currentBuilding.dailyIncome, currentBuilding.dailyOutcome));
                 }
-                Console.ReadKey(true);
-                Console.Clear();
             }
             else
             {
                 Console.WriteLine("    None owned");
-                Console.ReadKey(true);
-                Console.Clear();
             }
         }
 

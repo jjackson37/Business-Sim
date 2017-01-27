@@ -13,6 +13,15 @@ namespace Business_Sim
         private Game currentGame;
 
         /// <summary>
+        /// Clears console after the user presses a key
+        /// </summary>
+        public void PressKeyAndClear()
+        {
+            Console.ReadKey(true);
+            Console.Clear();
+        }
+
+        /// <summary>
         /// Prints main menu selection into console for the user and calls game functions depending on user input
         /// </summary>
         public void MainMenuSelection()
@@ -55,8 +64,7 @@ namespace Business_Sim
 
                             default:
                                 Console.WriteLine("Invalid input");
-                                Console.ReadKey(true);
-                                Console.Clear();
+                                PressKeyAndClear();
                                 break;
                         }
                         if (difficultyInput != Game.Difficulty.Unknown)
@@ -68,24 +76,26 @@ namespace Business_Sim
                         break;
 
                     case '2':
+                        Console.WriteLine("Amazing load placeholder!");
+                        PressKeyAndClear();
                         //TODO: Load save file function
                         break;
 
                     case '3':
+                        Console.WriteLine("Amazing help placeholder!");
+                        PressKeyAndClear();
                         //TODO: Help menu function
                         break;
 
                     case '4':
                         Console.WriteLine("Goodbye");
-                        Console.ReadKey(true);
-                        Console.Clear();
+                        PressKeyAndClear();
                         isRunning = false;
                         break;
 
                     default:
                         Console.WriteLine("Invalid input");
-                        Console.ReadKey(true);
-                        Console.Clear();
+                        PressKeyAndClear();
                         break;
                 }
             }
@@ -108,6 +118,7 @@ namespace Business_Sim
                     {
                         Building buyingBuilding = new Building(buildingTypeToBuy);
                         currentGame.cash = currentGame.gameAssets.Add(buyingBuilding, currentGame.cash);
+                        PressKeyAndClear();
                     }
                     break;
 
@@ -115,25 +126,31 @@ namespace Business_Sim
                     Console.Write("        -Sell-\n        1-Flat\n        2-House\n        3-Shop\n        4-Flat Block\n"
                         + "        5-Office\n        6-Shopping centre\n        7-Office block\n        8-Sky scraper\n");
                     Building.BuildingType buildingTypeToSell = SelectBuildingType(2);
-                    Building buildingToSell = currentGame.gameAssets.Find(buildingTypeToSell);
-                    if (buildingToSell != null)
+                    if (!buildingTypeToSell.Equals(Building.BuildingType.Unknown))
                     {
-                        currentGame.cash += currentGame.gameAssets.Remove(buildingToSell);
+                        Building buildingToSell = currentGame.gameAssets.Find(buildingTypeToSell);
+                        if (buildingToSell != null)
+                        {
+                            currentGame.cash += currentGame.gameAssets.Remove(buildingToSell);
+                        }
+                        PressKeyAndClear();
                     }
                     break;
 
                 case '3':
-                    currentGame.gameAssets.Upgrade(); //TODO
+                    //currentGame.gameAssets.Upgrade(); TODO
+                    Console.WriteLine("    Amazing upgrade placeholder!");
+                    PressKeyAndClear();
                     break;
 
                 case '4':
-                    currentGame.gameAssets.ViewBuildings(); //TODO
+                    currentGame.gameAssets.ViewBuildings();
+                    PressKeyAndClear();
                     break;
 
                 default:
                     Console.WriteLine("    Invalid input");
-                    Console.ReadKey(true);
-                    Console.Clear();
+                    PressKeyAndClear();
                     break;
             }
         }
@@ -187,8 +204,7 @@ namespace Business_Sim
 
                 default:
                     Console.WriteLine(indent + "Invalid input");
-                    Console.ReadKey(true);
-                    Console.Clear();
+                    PressKeyAndClear();
                     break;
             }
             return returnValue;
@@ -199,7 +215,8 @@ namespace Business_Sim
         /// </summary>
         private void EmployeesMenu()
         {
-            //TODO
+            Console.WriteLine("Amazing employee menu placeholder!");
+            PressKeyAndClear();
         }
 
         /// <summary>
@@ -223,6 +240,8 @@ namespace Business_Sim
                         break;
 
                     case '3':
+                        Console.WriteLine("The next day... jk placeholder");
+                        PressKeyAndClear();
                         //TODO: Calculate costs and profits for day
                         break;
 
@@ -233,8 +252,7 @@ namespace Business_Sim
 
                     default:
                         Console.WriteLine("Invalid input");
-                        Console.ReadKey(true);
-                        Console.Clear();
+                        PressKeyAndClear();
                         break;
                 }
             }

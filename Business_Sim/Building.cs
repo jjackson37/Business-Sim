@@ -172,7 +172,7 @@
                 dailyIncome = dailyIncome * _upgradeLevel;
                 dailyOutcome = dailyOutcome * _upgradeLevel;
                 sellPrice = (buyPrice / 2) * ((decimal)_upgradeLevel / 2);
-                upgradePrice = buyPrice * (_upgradeLevel / 2);
+                upgradePrice = buyPrice * ((decimal)_upgradeLevel / 2);
             }
         }
 
