@@ -186,7 +186,7 @@ namespace Business_Sim
             bool inGame = true;
             while (inGame)
             {
-                Console.Write("-Business Sim-\nDate:" + game.currentDate.ToShortDateString() + "\nCash:" + game.cash + "\n");
+                Console.Write("-Business Sim-\nDate:" + game.gameDate.currentDateString + "\nCash:" + game.cash + "\n");
                 Console.Write("1-Properties\n2-Employees\n3-Next day\n4-Exit to main menu\n");
                 switch (Console.ReadKey(true).KeyChar)
                 {

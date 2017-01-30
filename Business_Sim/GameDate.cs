@@ -33,10 +33,21 @@ namespace Business_Sim
         /// </summary>
         public DateTime currentDate
         {
-            get { return _currentDate.Date; }
+            get { return _currentDate; }
             set
             {
                 _currentDate = value.Date;
+            }
+        }
+
+        /// <summary>
+        /// Current game date as string
+        /// </summary>
+        public string currentDateString
+        {
+            get
+            {
+                return _currentDate.ToShortDateString();
             }
         }
 
