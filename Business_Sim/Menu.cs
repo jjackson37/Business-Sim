@@ -3,7 +3,7 @@
 namespace Business_Sim
 {
     /// <summary>
-    /// Console UI system
+    /// Console UI
     /// </summary>
     internal class Menu
     {
@@ -122,8 +122,7 @@ namespace Business_Sim
                     Building.BuildingType buildingTypeToBuy = SelectBuildingType(2);
                     if (buildingTypeToBuy != Building.BuildingType.Unknown)
                     {
-                        Building buyingBuilding = new Building(buildingTypeToBuy);
-                        currentGame.cash = currentGame.gameAssets.Add(buyingBuilding, currentGame.cash);
+                        currentGame.cash = currentGame.gameAssets.Add(buildingTypeToBuy, currentGame.cash);
                         PressKeyAndClear();
                     }
                     break;

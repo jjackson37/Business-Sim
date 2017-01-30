@@ -31,11 +31,12 @@ namespace Business_Sim
         /// <summary>
         /// Adds a building to the owned buildings list and updates the current cash
         /// </summary>
-        /// <param name="buildingToBuy">Type of building to buy</param>
+        /// <param name="buildingTypeToBuy">Type of building to buy</param>
         /// <param name="currentCash">Current cash of the game</param>
         /// <returns>New cash of the game</returns>
-        public decimal Add(Building buildingToBuy, decimal currentCash)
+        public decimal Add(Building.BuildingType buildingTypeToBuy, decimal currentCash)
         {
+            Building buildingToBuy = new Building(buildingTypeToBuy);
             if (currentCash >= buildingToBuy.buyPrice)
             {
                 currentCash -= buildingToBuy.buyPrice;
