@@ -1,9 +1,16 @@
 ﻿namespace Business_Sim
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        #region Methods
+
+        private static void Main(string[] args)
         {
+            System.Console.WindowWidth = 125;
+            Menu mainMenu = new Menu();
+            mainMenu.MainMenuSelection();
         }
+
+        #endregion Methods
     }
 }
