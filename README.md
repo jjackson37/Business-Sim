@@ -15,6 +15,8 @@
   - Sell properties.
   - Upgradable to gather more income / have less costs.
   - Properties have types such as houses that you rent out or shops that sell goods.
+- Date system
+  - Each new day total profit is calculated based on costs and income.
 
 ## Planned features
 
@@ -25,5 +27,4 @@
   - Keep employees by changing company policies such as salary and total holidays.
   - Manage employee ranks e.g. give promotions and demotions.
 - Date system
-  - Each new day total profit is calculated based on costs and income.
   - Random events that effect profit e.g. less customers or delivery problem with goods.
