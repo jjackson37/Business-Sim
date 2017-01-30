@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Business_Sim
+﻿namespace Business_Sim
 {
     /// <summary>
     /// Stores information about a game
@@ -12,7 +10,12 @@ namespace Business_Sim
         /// <summary>
         /// Buildings and employees
         /// </summary>
-        public Asset gameAssets;
+        public Asset assets;
+
+        /// <summary>
+        /// Time operations of game
+        /// </summary>
+        public GameDate gameDate;
 
         /// <summary>
         /// Difficulty of the game
@@ -24,7 +27,7 @@ namespace Business_Sim
         #region Constructors
 
         /// <summary>
-        /// Sets starting values of the game base on difficulty
+        /// Sets starting values of the game based on difficulty
         /// </summary>
         /// <param name="gameDifficulty">Difficulty of the game</param>
         public Game(Difficulty gameDifficulty)
@@ -59,9 +62,8 @@ namespace Business_Sim
                 default:
                     break;
             }
-            startDate = DateTime.Today.Date;
-            currentDate = startDate;
-            gameAssets = new Asset();
+            gameDate = new GameDate();
+            assets = new Asset();
         }
 
         #endregion Constructors
@@ -90,16 +92,6 @@ namespace Business_Sim
         /// Current cash
         /// </summary>
         public decimal cash { get; set; }
-
-        /// <summary>
-        /// Ingame date
-        /// </summary>
-        public DateTime currentDate { get; set; }
-
-        /// <summary>
-        /// Game creation date
-        /// </summary>
-        public DateTime startDate { get; private set; }
 
         #endregion Properties
     }

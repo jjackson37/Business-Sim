@@ -14,12 +14,12 @@
   - Buying properties.
   - Sell properties.
   - Upgradable to gather more income / have less costs.
+  - Properties have types such as houses that you rent out or shops that sell goods.
 
 ## Planned features
 
 - Properties
-  - Properties will have types such as houses that you rent out or shops that sell goods.
-  
+  - Make types have more effects on gameplay e.g. shops needing stock or houses needing repairs.
 - Employees
   - Hire and fire employees.
   - Keep employees by changing company policies such as salary and total holidays.

@@ -12,7 +12,7 @@ namespace Business_Sim
         /// <summary>
         /// Currently loaded game
         /// </summary>
-        private Game currentGame;
+        private Game game;
 
         #endregion Fields
 
@@ -66,7 +66,7 @@ namespace Business_Sim
                         }
                         if (difficultyInput != Game.Difficulty.Unknown)
                         {
-                            currentGame = new Game(difficultyInput);
+                            game = new Game(difficultyInput);
                             Console.Clear();
                             GameMenu();
                         }
@@ -122,7 +122,7 @@ namespace Business_Sim
                     Building.BuildingType buildingTypeToBuy = SelectBuildingType(2);
                     if (buildingTypeToBuy != Building.BuildingType.Unknown)
                     {
-                        currentGame.cash = currentGame.gameAssets.Add(buildingTypeToBuy, currentGame.cash);
+                        game.cash = game.assets.Add(buildingTypeToBuy, game.cash);
                         PressKeyAndClear();
                     }
                     break;
@@ -133,10 +133,10 @@ namespace Business_Sim
                     Building.BuildingType buildingTypeToSell = SelectBuildingType(2);
                     if (!buildingTypeToSell.Equals(Building.BuildingType.Unknown))
                     {
-                        Building buildingToSell = currentGame.gameAssets.Find(buildingTypeToSell);
+                        Building buildingToSell = game.assets.Find(buildingTypeToSell);
                         if (buildingToSell != null)
                         {
-                            currentGame.cash += currentGame.gameAssets.Remove(buildingToSell);
+                            game.cash += game.assets.Remove(buildingToSell);
                         }
                         PressKeyAndClear();
                     }
@@ -148,17 +148,17 @@ namespace Business_Sim
                     Building.BuildingType buildingTypeToUpgrade = SelectBuildingType(2);
                     if (!buildingTypeToUpgrade.Equals(Building.BuildingType.Unknown))
                     {
-                        Building buildingToUpgrade = currentGame.gameAssets.Find(buildingTypeToUpgrade);
+                        Building buildingToUpgrade = game.assets.Find(buildingTypeToUpgrade);
                         if (buildingToUpgrade != null)
                         {
-                            currentGame.cash = currentGame.gameAssets.Upgrade(buildingToUpgrade,currentGame.cash);
+                            game.cash = game.assets.Upgrade(buildingToUpgrade,game.cash);
                         }
                         PressKeyAndClear();
                     }
                     break;
 
                 case '4':
-                    currentGame.gameAssets.ViewBuildings();
+                    game.assets.ViewBuildings();
                     PressKeyAndClear();
                     break;
 
@@ -186,7 +186,7 @@ namespace Business_Sim
             bool inGame = true;
             while (inGame)
             {
-                Console.Write("-Business Sim-\nDate:" + currentGame.currentDate.ToShortDateString() + "\nCash:" + currentGame.cash + "\n");
+                Console.Write("-Business Sim-\nDate:" + game.currentDate.ToShortDateString() + "\nCash:" + game.cash + "\n");
                 Console.Write("1-Properties\n2-Employees\n3-Next day\n4-Exit to main menu\n");
                 switch (Console.ReadKey(true).KeyChar)
                 {

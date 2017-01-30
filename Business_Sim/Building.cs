@@ -14,7 +14,7 @@
         #region Constructors
 
         /// <summary>
-        /// Sets all default properties of the building depending on the type being added
+        /// Creates a building object and sets all default properties of the building depending on the type being created
         /// </summary>
         /// <param name="buildingType">Building type to add</param>
         public Building(BuildingType buildingType)
