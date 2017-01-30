@@ -26,6 +26,42 @@ namespace Business_Sim
 
         #endregion Enums
 
+        #region Properties
+
+        /// <summary>
+        /// Total daily income of all assets
+        /// </summary>
+        public decimal income
+        {
+            get
+            {
+                decimal incomeReturn = 0;
+                foreach (Building currentBuilding in ownedBuildings)
+                {
+                    incomeReturn += currentBuilding.dailyIncome;
+                }
+                return incomeReturn;
+            }
+        }
+
+        /// <summary>
+        /// Total daily outcome of all assets
+        /// </summary>
+        public decimal outcome
+        {
+            get
+            {
+                decimal outcomeReturn = 0;
+                foreach (Building currentBuilding in ownedBuildings)
+                {
+                    outcomeReturn += currentBuilding.dailyOutcome;
+                }
+                return outcomeReturn;
+            }
+        }
+
+        #endregion Properties
+
         #region Methods
 
         /// <summary>
@@ -56,7 +92,7 @@ namespace Business_Sim
         /// <param name="rankToHire">Rank of employee to hire</param>
         public void Add(EmployeeRank rankToHire)
         {
-          //TODO
+            //TODO
         }
 
         /// <summary>

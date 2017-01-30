@@ -15,7 +15,7 @@
         /// <summary>
         /// Time operations of game
         /// </summary>
-        public GameDate gameDate;
+        public GameDate date;
 
         /// <summary>
         /// Difficulty of the game
@@ -62,7 +62,7 @@
                 default:
                     break;
             }
-            gameDate = new GameDate();
+            date = new GameDate();
             assets = new Asset();
         }
 

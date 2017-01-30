@@ -151,7 +151,7 @@ namespace Business_Sim
                         Building buildingToUpgrade = game.assets.Find(buildingTypeToUpgrade);
                         if (buildingToUpgrade != null)
                         {
-                            game.cash = game.assets.Upgrade(buildingToUpgrade,game.cash);
+                            game.cash = game.assets.Upgrade(buildingToUpgrade, game.cash);
                         }
                         PressKeyAndClear();
                     }
@@ -186,7 +186,7 @@ namespace Business_Sim
             bool inGame = true;
             while (inGame)
             {
-                Console.Write("-Business Sim-\nDate:" + game.gameDate.currentDateString + "\nCash:" + game.cash + "\n");
+                Console.Write("-Business Sim-\nDate:" + game.date.currentDateString + "\nCash:" + game.cash + "\n");
                 Console.Write("1-Properties\n2-Employees\n3-Next day\n4-Exit to main menu\n");
                 switch (Console.ReadKey(true).KeyChar)
                 {
@@ -199,9 +199,9 @@ namespace Business_Sim
                         break;
 
                     case '3':
-                        Console.WriteLine("The next day... jk placeholder");
+                        game.cash += game.date.Progress(1, game.assets.income, game.assets.outcome);
+                        Console.WriteLine("Next day...");
                         PressKeyAndClear();
-                        //TODO: Calculate costs and profits for day
                         break;
 
                     case '4':
