@@ -10,33 +10,33 @@
             switch (employeeType)
             {
                 case EmployeeType.Worker:
-                    buyPrice = 0;
-                    dailyOutcome = 0;
+                    buyPrice = 50.00M;
+                    dailyOutcome = 10.00M;
                     break;
 
                 case EmployeeType.Manager:
-                    buyPrice = 0;
-                    dailyOutcome = 0;
+                    buyPrice = 500.00M;
+                    dailyOutcome = 250.00M;
                     break;
 
                 case EmployeeType.RegionalManager:
-                    buyPrice = 0;
-                    dailyOutcome = 0;
+                    buyPrice = 10000.00M;
+                    dailyOutcome = 5000.00M;
                     break;
 
                 case EmployeeType.Administrator:
-                    buyPrice = 0;
-                    dailyOutcome = 0;
+                    buyPrice = 1000000.00M;
+                    dailyOutcome = 100000.00M;
                     break;
 
                 case EmployeeType.Director:
-                    buyPrice = 0;
-                    dailyOutcome = 0;
+                    buyPrice = 25000000.00M;
+                    dailyOutcome = 500000.00M;
                     break;
 
                 default:
-                    buyPrice = 0;
-                    dailyOutcome = 0;
+                    buyPrice = 0.00M;
+                    dailyOutcome = 0.00M;
                     break;
             }
         }
