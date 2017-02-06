@@ -42,31 +42,31 @@
 
                 case BuildingType.Shop:
                     dailyIncome = 50.00M;
-                    dailyOutcome = 15.00M;
+                    dailyOutcome = 10.00M;
                     buyPrice = 5000.00M;
                     break;
 
                 case BuildingType.ShoppingCentre:
                     dailyIncome = 500.00M;
-                    dailyOutcome = 150.00M;
+                    dailyOutcome = 100.00M;
                     buyPrice = 50000.00M;
                     break;
 
                 case BuildingType.Office:
                     dailyIncome = 150.00M;
-                    dailyOutcome = 50.00M;
+                    dailyOutcome = 30.00M;
                     buyPrice = 15000.00M;
                     break;
 
                 case BuildingType.OfficeBlock:
                     dailyIncome = 1500.00M;
-                    dailyOutcome = 500.00M;
+                    dailyOutcome = 300.00M;
                     buyPrice = 150000.00M;
                     break;
 
                 case BuildingType.SkyScraper:
                     dailyIncome = 2500.00M;
-                    dailyOutcome = 750.00M;
+                    dailyOutcome = 500.00M;
                     buyPrice = 250000.00M;
                     break;
 
@@ -183,8 +183,8 @@
             set
             {
                 _upgradeLevel = value;
-                dailyIncome = dailyIncome * _upgradeLevel;
-                dailyOutcome = dailyOutcome * _upgradeLevel;
+                dailyIncome = (buyPrice/100) * _upgradeLevel;
+                dailyOutcome = (dailyIncome/5);
                 sellPrice = (buyPrice / 2) * ((decimal)_upgradeLevel / 2);
                 upgradePrice = buyPrice * ((decimal)_upgradeLevel / 2);
             }
