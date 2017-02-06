@@ -1,9 +1,16 @@
 ﻿namespace Business_Sim
 {
+    /// <summary>
+    /// Allows buildings to earn incomem, cost outcome per day
+    /// </summary>
     internal class Employee
     {
         #region Constructors
 
+        /// <summary>
+        /// Creates a employee object and sets all default properties of the employee depending on the type being created
+        /// </summary>
+        /// <param name="employeeType">Employee type to add</param>
         public Employee(EmployeeType employeeType)
         {
             this.employeeType = employeeType;
@@ -45,6 +52,9 @@
 
         #region Enums
 
+        /// <summary>
+        /// Employee type
+        /// </summary>
         public enum EmployeeType
         {
             Unknown = 0,
@@ -59,10 +69,24 @@
 
         #region Properties
 
+        /// <summary>
+        /// Price to intially hire the employee
+        /// </summary>
         public decimal buyPrice { get; }
+
+        /// <summary>
+        /// Cost of the employee per day
+        /// </summary>
         public decimal dailyOutcome { get; private set; }
+
+        /// <summary>
+        /// Type of the employee
+        /// </summary>
         public EmployeeType employeeType { get; }
 
+        /// <summary>
+        /// Returns the employee type as a string
+        /// </summary>
         public string employeeTypeString
         {
             get

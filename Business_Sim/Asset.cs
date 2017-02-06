@@ -170,7 +170,7 @@ namespace Business_Sim
                     if (currentEmployee.employeeType.Equals(employeeType))
                     {
                         Console.WriteLine(string.Format("        {2} - {0} - Daily outcome {1}",
-                            currentEmployee.employeeTypeString,  currentEmployee.dailyOutcome,
+                            currentEmployee.employeeTypeString, currentEmployee.dailyOutcome,
                             ownedEmployees.FindIndex(currentEmployee.Equals)));
                         foundAResult = true;
                     }

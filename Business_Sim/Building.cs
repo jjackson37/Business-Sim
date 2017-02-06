@@ -84,7 +84,7 @@
         #region Enums
 
         /// <summary>
-        /// Building types
+        /// Building type
         /// </summary>
         public enum BuildingType
         {
