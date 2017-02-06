@@ -183,8 +183,8 @@
             set
             {
                 _upgradeLevel = value;
-                dailyIncome = dailyIncome * _upgradeLevel;
-                dailyOutcome = dailyOutcome * _upgradeLevel;
+                dailyIncome = (buyPrice / 100) * _upgradeLevel;
+                dailyOutcome = (dailyIncome / 5);
                 sellPrice = (buyPrice / 2) * ((decimal)_upgradeLevel / 2);
                 upgradePrice = buyPrice * ((decimal)_upgradeLevel / 2);
             }
