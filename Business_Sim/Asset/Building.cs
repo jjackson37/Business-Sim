@@ -154,6 +154,25 @@
             }
         }
 
+        //TODO: Worker <---> building implementation
+
+        /// <summary>
+        /// Amount of workers needed for the building to function
+        /// </summary>
+        public int workersNeeded { get; }
+
+        /// <summary>
+        /// Amount of workers currently assigned to the building
+        /// </summary>
+        public int currentWorkers { get; set; }
+
+        //TODO: Manager <---> building implementation
+
+        /// <summary>
+        /// Manager assigned to the building
+        /// </summary>
+        public Manager assignedManager { get; set; }
+
         /// <summary>
         /// Price to buy/add the building to the owned buildings list
         /// </summary>

@@ -24,6 +24,8 @@ namespace Business_Sim
 
         #region Properties
 
+        //TODO: Remove income generation from employees
+
         /// <summary>
         /// Total daily income of all assets
         /// </summary>
@@ -35,6 +37,10 @@ namespace Business_Sim
                 foreach (Building currentBuilding in ownedBuildings)
                 {
                     incomeReturn += currentBuilding.dailyIncome;
+                }
+                foreach (Employee currentEmployee in ownedEmployees)
+                {
+                    incomeReturn += currentEmployee.dailyIncome;
                 }
                 return incomeReturn;
             }

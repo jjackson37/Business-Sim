@@ -1,7 +1,7 @@
 ﻿namespace Business_Sim
 {
     /// <summary>
-    /// Allows buildings to earn incomem, cost outcome per day
+    /// Allows buildings to earn income, cost outcome per day
     /// </summary>
     internal class Employee
     {
@@ -19,31 +19,37 @@
                 case EmployeeType.Worker:
                     buyPrice = 50.00M;
                     dailyOutcome = 10.00M;
+                    dailyIncome = 12.00M;
                     break;
 
                 case EmployeeType.Manager:
                     buyPrice = 500.00M;
                     dailyOutcome = 250.00M;
+                    dailyIncome = 260.00M;
                     break;
 
                 case EmployeeType.RegionalManager:
                     buyPrice = 10000.00M;
                     dailyOutcome = 5000.00M;
+                    dailyIncome = 5050.00M;
                     break;
 
                 case EmployeeType.Administrator:
                     buyPrice = 1000000.00M;
                     dailyOutcome = 100000.00M;
+                    dailyIncome = 100100.00M;
                     break;
 
                 case EmployeeType.Director:
                     buyPrice = 25000000.00M;
                     dailyOutcome = 500000.00M;
+                    dailyIncome = 501000.00M;
                     break;
 
                 default:
                     buyPrice = 0.00M;
                     dailyOutcome = 0.00M;
+                    dailyIncome = 0.00M;
                     break;
             }
         }
@@ -77,12 +83,19 @@
         /// <summary>
         /// Cost of the employee per day
         /// </summary>
-        public decimal dailyOutcome { get; private set; }
+        public decimal dailyOutcome { get; }
 
         /// <summary>
         /// Type of the employee
         /// </summary>
         public EmployeeType employeeType { get; }
+
+        //TODO: Remove daily income from employees
+
+        /// <summary>
+        /// TEMP: Income earned daily
+        /// </summary>
+        public decimal dailyIncome { get; }
 
         /// <summary>
         /// Returns the employee type as a string

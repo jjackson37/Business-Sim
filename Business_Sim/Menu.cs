@@ -169,18 +169,20 @@ namespace Business_Sim
                     break;
 
                 default:
-                    Console.WriteLine("    Invalid input");
+                    Console.WriteLine("{0}Invalid input" , _INDENT);
                     PressKeyAndClear();
                     break;
             }
         }
+
+        //TODO: Remove WIP tags from text
 
         /// <summary>
         /// Prints Employees menu and calls employees functions depending on user input
         /// </summary>
         private void EmployeesMenu()
         {
-            Console.Write("{0}-Employees-\n{0}1-Hire\n{0}2-Fire\n{0}3-View current employees\n", _INDENT);
+            Console.Write("{0}-Employees (WIP)-\n{0}1-Hire\n{0}2-Fire\n{0}3-View current employees\n", _INDENT);
             switch (Console.ReadKey(true).KeyChar)
             {
                 case '1':
@@ -196,7 +198,7 @@ namespace Business_Sim
                     break;
 
                 case '2':
-                    Console.Write("{0}{0}-Sell-\n{0}{0}1-Worker\n{0}{0}2-Manager\n{0}{0}3-Regional manager\n{0}{0}4-Administrator\n"
+                    Console.Write("{0}{0}-Fire-\n{0}{0}1-Worker\n{0}{0}2-Manager\n{0}{0}3-Regional manager\n{0}{0}4-Administrator\n"
                         + "{0}{0}5-Director\n", _INDENT);
                     Employee.EmployeeType employeeTypeToFire = SelectEmployeeType(2);
                     if (!employeeTypeToFire.Equals(Employee.EmployeeType.Unknown))
@@ -231,7 +233,7 @@ namespace Business_Sim
             while (inGame)
             {
                 Console.Write("-Business Sim-\nDate:" + game.date.currentDateString + "\nCash:" + game.cash + "\n");
-                Console.Write("1-Properties\n2-Employees\n3-Next day\n4-Exit to main menu\n");
+                Console.Write("1-Properties\n2-Employees (WIP)\n3-Next day\n4-Exit to main menu\n");
                 switch (Console.ReadKey(true).KeyChar)
                 {
                     case '1':

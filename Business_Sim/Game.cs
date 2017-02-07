@@ -26,6 +26,8 @@
 
         #region Constructors
 
+        //TODO: Remove Dev difficulty level
+
         /// <summary>
         /// Sets starting values of the game based on difficulty
         /// </summary>
