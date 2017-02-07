@@ -26,6 +26,8 @@
 
         #region Constructors
 
+        //TODO: Remove Dev difficulty level
+
         /// <summary>
         /// Sets starting values of the game based on difficulty
         /// </summary>
@@ -36,27 +38,31 @@
             switch (this.gameDifficulty)
             {
                 case Difficulty.vEasy:
-                    cash = 7500.00M;
+                    cash = 75000.00M;
                     break;
 
                 case Difficulty.Easy:
-                    cash = 5000.00M;
+                    cash = 50000.00M;
                     break;
 
                 case Difficulty.Normal:
-                    cash = 2500.00M;
+                    cash = 25000.00M;
                     break;
 
                 case Difficulty.Hard:
-                    cash = 1000.00M;
+                    cash = 10000.00M;
                     break;
 
                 case Difficulty.vHard:
-                    cash = 500.00M;
+                    cash = 5000.00M;
                     break;
 
                 case Difficulty.Extreme:
-                    cash = 100.00M;
+                    cash = 1000.00M;
+                    break;
+
+                case Difficulty.Dev:
+                    cash = 10000000000M;
                     break;
 
                 default:
@@ -81,7 +87,8 @@
             Normal = 3,
             Hard = 4,
             vHard = 5,
-            Extreme = 6
+            Extreme = 6,
+            Dev = 7
         }
 
         #endregion Enums

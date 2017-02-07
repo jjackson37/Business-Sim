@@ -7,6 +7,8 @@ namespace Business_Sim
     /// </summary>
     internal class Menu
     {
+        private const string _INDENT = "    ";
+
         #region Fields
 
         /// <summary>
@@ -31,7 +33,7 @@ namespace Business_Sim
                 switch (Console.ReadKey(true).KeyChar)
                 {
                     case '1':
-                        Console.Write("    What difficulty?\n    1-vEasy\n    2-Easy\n    3-Normal\n    4-Hard\n    5-vHard\n    6-Extreme\n    ");
+                        Console.Write("{0}What difficulty?\n{0}1-vEasy\n{0}2-Easy\n{0}3-Normal\n{0}4-Hard\n{0}5-vHard\n{0}6-Extreme\n{0}", _INDENT);
                         Game.Difficulty difficultyInput = Game.Difficulty.Unknown;
                         switch (Console.ReadKey(true).KeyChar)
                         {
@@ -57,6 +59,10 @@ namespace Business_Sim
 
                             case '6':
                                 difficultyInput = Game.Difficulty.Extreme;
+                                break;
+
+                            case '7':
+                                difficultyInput = Game.Difficulty.Dev;
                                 break;
 
                             default:
@@ -112,12 +118,12 @@ namespace Business_Sim
         /// </summary>
         private void BuildingsMenu()
         {
-            Console.Write("    -Properties-\n    1-Buy\n    2-Sell\n    3-Upgrade\n    4-View owned properties\n");
+            Console.Write("{0}-Properties-\n{0}1-Buy\n{0}2-Sell\n{0}3-Upgrade\n{0}4-View owned properties\n", _INDENT);
             switch (Console.ReadKey(true).KeyChar)
             {
                 case '1':
-                    Console.Write("        -Buy-\n        1-Flat (1000)\n        2-House (2000)\n        3-Shop (5000)\n        4-Flat Block (10000)\n"
-                        + "        5-Office (15000)\n        6-Shopping centre (50000)\n        7-Office block (150000)\n        8-Sky scraper (250000)\n");
+                    Console.Write("{0}{0}-Buy-\n{0}{0}1-Flat (10,000)\n{0}{0}2-House (20,000)\n{0}{0}3-Shop (50,000)\n{0}{0}4-Flat Block (100,000)\n"
+                        + "{0}{0}5-Office (150,000)\n{0}{0}6-Shopping centre (500,000)\n{0}{0}7-Office block (1,500,000)\n{0}{0}8-Sky scraper (2,500,000)\n", _INDENT);
 
                     Building.BuildingType buildingTypeToBuy = SelectBuildingType(2);
                     if (buildingTypeToBuy != Building.BuildingType.Unknown)
@@ -128,8 +134,8 @@ namespace Business_Sim
                     break;
 
                 case '2':
-                    Console.Write("        -Sell-\n        1-Flat\n        2-House\n        3-Shop\n        4-Flat Block\n"
-                        + "        5-Office\n        6-Shopping centre\n        7-Office block\n        8-Sky scraper\n");
+                    Console.Write("{0}{0}-Sell-\n{0}{0}1-Flat\n{0}{0}2-House\n{0}{0}3-Shop\n{0}{0}4-Flat Block\n"
+                        + "{0}{0}5-Office\n{0}{0}6-Shopping centre\n{0}{0}7-Office block\n{0}{0}8-Sky scraper\n", _INDENT);
                     Building.BuildingType buildingTypeToSell = SelectBuildingType(2);
                     if (!buildingTypeToSell.Equals(Building.BuildingType.Unknown))
                     {
@@ -143,8 +149,8 @@ namespace Business_Sim
                     break;
 
                 case '3':
-                    Console.Write("        -Upgrade-\n        1-Flat\n        2-House\n        3-Shop\n        4-Flat Block\n"
-                        + "        5-Office\n        6-Shopping centre\n        7-Office block\n        8-Sky scraper\n");
+                    Console.Write("{0}{0}-Upgrade-\n{0}{0}1-Flat\n{0}{0}2-House\n{0}{0}3-Shop\n{0}{0}4-Flat Block\n"
+                        + "{0}{0}5-Office\n{0}{0}6-Shopping centre\n{0}{0}7-Office block\n{0}{0}8-Sky scraper\n", _INDENT);
                     Building.BuildingType buildingTypeToUpgrade = SelectBuildingType(2);
                     if (!buildingTypeToUpgrade.Equals(Building.BuildingType.Unknown))
                     {
@@ -163,19 +169,59 @@ namespace Business_Sim
                     break;
 
                 default:
-                    Console.WriteLine("    Invalid input");
+                    Console.WriteLine("{0}Invalid input" , _INDENT);
                     PressKeyAndClear();
                     break;
             }
         }
 
+        //TODO: Remove WIP tags from text
+
         /// <summary>
-        /// TODO
+        /// Prints Employees menu and calls employees functions depending on user input
         /// </summary>
         private void EmployeesMenu()
         {
-            Console.WriteLine("Amazing employee menu placeholder!");
-            PressKeyAndClear();
+            Console.Write("{0}-Employees (WIP)-\n{0}1-Hire\n{0}2-Fire\n{0}3-View current employees\n", _INDENT);
+            switch (Console.ReadKey(true).KeyChar)
+            {
+                case '1':
+                    Console.Write("{0}{0}-Hire-\n{0}{0}1-Worker (50)\n{0}{0}2-Manager (500)\n{0}{0}3-Regional manager (10,000)\n"
+                        + "{0}{0}4-Administrator (1,000,000)\n{0}{0}5-Director (25,000,000)\n", _INDENT);
+
+                    Employee.EmployeeType employeeTypeToBuy = SelectEmployeeType(2);
+                    if (employeeTypeToBuy != Employee.EmployeeType.Unknown)
+                    {
+                        game.cash = game.assets.Add(employeeTypeToBuy, game.cash);
+                        PressKeyAndClear();
+                    }
+                    break;
+
+                case '2':
+                    Console.Write("{0}{0}-Fire-\n{0}{0}1-Worker\n{0}{0}2-Manager\n{0}{0}3-Regional manager\n{0}{0}4-Administrator\n"
+                        + "{0}{0}5-Director\n", _INDENT);
+                    Employee.EmployeeType employeeTypeToFire = SelectEmployeeType(2);
+                    if (!employeeTypeToFire.Equals(Employee.EmployeeType.Unknown))
+                    {
+                        Employee employeeToFire = game.assets.Find(employeeTypeToFire);
+                        if (employeeToFire != null)
+                        {
+                            game.assets.Remove(employeeToFire);
+                        }
+                        PressKeyAndClear();
+                    }
+                    break;
+
+                case '3':
+                    game.assets.ViewEmployees();
+                    PressKeyAndClear();
+                    break;
+
+                default:
+                    Console.WriteLine("{0}Invalid input", _INDENT);
+                    PressKeyAndClear();
+                    break;
+            }
         }
 
         /// <summary>
@@ -187,7 +233,7 @@ namespace Business_Sim
             while (inGame)
             {
                 Console.Write("-Business Sim-\nDate:" + game.date.currentDateString + "\nCash:" + game.cash + "\n");
-                Console.Write("1-Properties\n2-Employees\n3-Next day\n4-Exit to main menu\n");
+                Console.Write("1-Properties\n2-Employees (WIP)\n3-Next day\n4-Exit to main menu\n");
                 switch (Console.ReadKey(true).KeyChar)
                 {
                     case '1':
@@ -195,7 +241,7 @@ namespace Business_Sim
                         break;
 
                     case '2':
-                        EmployeesMenu(); //TODO
+                        EmployeesMenu();
                         break;
 
                     case '3':
@@ -227,7 +273,7 @@ namespace Business_Sim
             string indent = "";
             for (int i = 0; i != indentSize; i++)
             {
-                indent += "    ";
+                indent += _INDENT;
             }
             Building.BuildingType returnValue = Building.BuildingType.Unknown;
             switch (Console.ReadKey(true).KeyChar)
@@ -267,6 +313,48 @@ namespace Business_Sim
                 default:
                     Console.WriteLine(indent + "Invalid input");
                     PressKeyAndClear();
+                    break;
+            }
+            return returnValue;
+        }
+
+        /// <summary>
+        /// Gets user to select a employee type
+        /// </summary>
+        /// <param name="indentSize">Number of indents for printed text</param>
+        /// <returns>Employee type selected by user</returns>
+        private Employee.EmployeeType SelectEmployeeType(int indentSize)
+        {
+            string indent = "";
+            for (int i = 0; i != indentSize; i++)
+            {
+                indent += "    ";
+            }
+            Employee.EmployeeType returnValue = Employee.EmployeeType.Unknown;
+            switch (Console.ReadKey(true).KeyChar)
+            {
+                case '1':
+                    returnValue = Employee.EmployeeType.Worker;
+                    break;
+
+                case '2':
+                    returnValue = Employee.EmployeeType.Manager;
+                    break;
+
+                case '3':
+                    returnValue = Employee.EmployeeType.RegionalManager;
+                    break;
+
+                case '4':
+                    returnValue = Employee.EmployeeType.Administrator;
+                    break;
+
+                case '5':
+                    returnValue = Employee.EmployeeType.Director;
+                    break;
+
+                default:
+                    returnValue = Employee.EmployeeType.Unknown;
                     break;
             }
             return returnValue;

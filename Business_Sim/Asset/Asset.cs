@@ -15,18 +15,16 @@ namespace Business_Sim
         /// </summary>
         private List<Building> ownedBuildings = new List<Building>();
 
+        /// <summary>
+        /// List of employees for the current game
+        /// </summary>
+        private List<Employee> ownedEmployees = new List<Employee>();
+
         #endregion Fields
 
-        #region Enums
-
-        public enum EmployeeRank
-        {
-            Unknown = 0
-        }
-
-        #endregion Enums
-
         #region Properties
+
+        //TODO: Remove income generation from employees
 
         /// <summary>
         /// Total daily income of all assets
@@ -39,6 +37,10 @@ namespace Business_Sim
                 foreach (Building currentBuilding in ownedBuildings)
                 {
                     incomeReturn += currentBuilding.dailyIncome;
+                }
+                foreach (Employee currentEmployee in ownedEmployees)
+                {
+                    incomeReturn += currentEmployee.dailyIncome;
                 }
                 return incomeReturn;
             }
@@ -55,6 +57,10 @@ namespace Business_Sim
                 foreach (Building currentBuilding in ownedBuildings)
                 {
                     outcomeReturn += currentBuilding.dailyOutcome;
+                }
+                foreach (Employee currentEmployee in ownedEmployees)
+                {
+                    outcomeReturn += currentEmployee.dailyOutcome;
                 }
                 return outcomeReturn;
             }
@@ -87,16 +93,29 @@ namespace Business_Sim
         }
 
         /// <summary>
-        /// TODO
+        /// Adds a employee to the owned employees list and updates the current cash
         /// </summary>
-        /// <param name="rankToHire">Rank of employee to hire</param>
-        public void Add(EmployeeRank rankToHire)
+        /// <param name="employeeTypeToBuy">Type of employee to buy</param>
+        /// <param name="currentCash">Current cash of the game</param>
+        /// <returns>New cash of the game</returns>
+        public decimal Add(Employee.EmployeeType employeeTypeToBuy, decimal currentCash)
         {
-            //TODO
+            Employee employeeToBuy = new Employee(employeeTypeToBuy);
+            if (currentCash >= employeeToBuy.buyPrice)
+            {
+                currentCash -= employeeToBuy.buyPrice;
+                ownedEmployees.Add(employeeToBuy);
+                Console.WriteLine("        " + employeeToBuy.employeeTypeString + " Hired successfully");
+            }
+            else
+            {
+                Console.WriteLine("        Insufficient funds");
+            }
+            return currentCash;
         }
 
         /// <summary>
-        /// Lists all owned buildings of a certain type and returns ones depending on user selection
+        /// Lists all owned buildings of a certain type and returns one depending on user selection
         /// </summary>
         /// <param name="buildingType">Building type to list</param>
         /// <returns>Found Building</returns>
@@ -142,6 +161,52 @@ namespace Business_Sim
         }
 
         /// <summary>
+        /// Lists all owned employees of a certain type and returns one depending on user selection
+        /// </summary>
+        /// <param name="employeeType">Employee type to list</param>
+        /// <returns>Found employee</returns>
+        public Employee Find(Employee.EmployeeType employeeType)
+        {
+            Employee returnEmployee = null;
+            bool foundAResult = false;
+            if (ownedEmployees.Count != 0)
+            {
+                foreach (Employee currentEmployee in ownedEmployees)
+                {
+                    if (currentEmployee.employeeType.Equals(employeeType))
+                    {
+                        Console.WriteLine(string.Format("        {2} - {0} - Daily outcome {1}",
+                            currentEmployee.employeeTypeString, currentEmployee.dailyOutcome,
+                            ownedEmployees.FindIndex(currentEmployee.Equals)));
+                        foundAResult = true;
+                    }
+                }
+            }
+            if (foundAResult)
+            {
+                Console.WriteLine("        Select employee");
+                try
+                {
+                    Console.Write("        ");
+                    int userInput = int.Parse(Console.ReadLine());
+                    if (ownedEmployees[userInput].employeeType.Equals(employeeType))
+                    {
+                        returnEmployee = ownedEmployees[userInput];
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("        " + ex.Message);
+                }
+            }
+            else
+            {
+                Console.WriteLine("        No results");
+            }
+            return returnEmployee;
+        }
+
+        /// <summary>
         /// Removes a building from the owned buildings list and returns the sell price
         /// </summary>
         /// <param name="buildingToSell">Building that is being sold</param>
@@ -151,9 +216,24 @@ namespace Business_Sim
             if (!buildingToSell.Equals(null))
             {
                 ownedBuildings.Remove(buildingToSell);
-                Console.WriteLine(string.Format("        {0} sold for {1}", buildingToSell.buildingTypeString, buildingToSell.sellPrice));
+                Console.WriteLine(string.Format("        {0} sold for {1}"
+                    , buildingToSell.buildingTypeString, buildingToSell.sellPrice));
             }
             return buildingToSell.sellPrice;
+        }
+
+        /// <summary>
+        /// Removes an employee from the owned employees list
+        /// </summary>
+        /// <param name="employeeToFire">Employee that is being fired</param>
+        public void Remove(Employee employeeToFire)
+        {
+            if (!employeeToFire.Equals(null))
+            {
+                ownedEmployees.Remove(employeeToFire);
+                Console.WriteLine(string.Format("        {0} fired"
+                    , employeeToFire.employeeTypeString));
+            }
         }
 
         /// <summary>
@@ -173,8 +253,8 @@ namespace Business_Sim
                     decimal oldUpgradePrice = buildingToUpgrade.upgradePrice;
                     buildingToUpgrade.upgradeLevel++;
                     Console.WriteLine(string.Format("        lvl {0} {1} upgraded to lvl {2} for {3}",
-                        buildingToUpgrade.upgradeLevel - 1, buildingToUpgrade.buildingTypeString, buildingToUpgrade.upgradeLevel,
-                        oldUpgradePrice));
+                        buildingToUpgrade.upgradeLevel - 1, buildingToUpgrade.buildingTypeString
+                        , buildingToUpgrade.upgradeLevel, oldUpgradePrice));
                 }
                 else
                 {
@@ -197,8 +277,9 @@ namespace Business_Sim
             {
                 foreach (Building currentBuilding in ownedBuildings)
                 {
-                    Console.WriteLine(string.Format("    Lvl {0} {1} - Daily income {2} - Daily outcome {3}", currentBuilding.upgradeLevel,
-                        currentBuilding.buildingTypeString, currentBuilding.dailyIncome, currentBuilding.dailyOutcome));
+                    Console.WriteLine(string.Format("    Lvl {0} {1} - Daily income {2} - Daily outcome {3}"
+                        , currentBuilding.upgradeLevel, currentBuilding.buildingTypeString
+                        , currentBuilding.dailyIncome, currentBuilding.dailyOutcome));
                 }
             }
             else
@@ -208,11 +289,22 @@ namespace Business_Sim
         }
 
         /// <summary>
-        /// TODO
+        /// Lists all owned employees in the console
         /// </summary>
         public void ViewEmployees()
         {
-            //TODO
+            if (ownedEmployees.Count != 0)
+            {
+                foreach (Employee currentEmployee in ownedEmployees)
+                {
+                    Console.WriteLine(string.Format("    {0} - daily outcome {1}"
+                        , currentEmployee.employeeTypeString, currentEmployee.dailyOutcome));
+                }
+            }
+            else
+            {
+                Console.WriteLine("    None hired");
+            }
         }
 
         #endregion Methods
