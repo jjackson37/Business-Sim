@@ -17,14 +17,18 @@
   - Properties have types such as houses that you rent out or shops that sell goods.
 - Date system
   - Each new day total profit is calculated based on costs and income.
+- Employees
+  - Hire and fire employees.
 
 ## Planned features
 
 - Properties
   - Make types have more effects on gameplay e.g. shops needing stock or houses needing repairs.
 - Employees
-  - Hire and fire employees.
-  - Keep employees by changing company policies such as salary and total holidays.
-  - Manage employee ranks e.g. give promotions and demotions.
+  - Buildings requiring an amount of workers to function
+  - Assigning managers to buildings to give bonuses
+  - Regions that buildings are held in that can be assinged regional managers for bonuses
+  - Global bonuses from administrative staff and a director
 - Date system
   - Random events that effect profit e.g. less customers or delivery problem with goods.
+  - Seasons that have an effect on different buildings profits
