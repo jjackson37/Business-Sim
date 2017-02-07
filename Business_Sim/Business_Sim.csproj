@@ -43,18 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Asset\Employee\Administrator.cs" />
-    <Compile Include="Asset\Employee\Director.cs" />
-    <Compile Include="Asset\Employee\Employee.cs" />
+    <Compile Include="Purchasables\Employee\Administrator.cs" />
+    <Compile Include="Purchasables\Employee\Director.cs" />
+    <Compile Include="Purchasables\Employee\Employee.cs" />
     <Compile Include="GameDate.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="Asset\Employee\Manager.cs" />
-    <Compile Include="Menu.cs" />
+    <Compile Include="Purchasables\Employee\Manager.cs" />
+    <Compile Include="Menus\BuildingMenu.cs" />
+    <Compile Include="Menus\EmployeeMenu.cs" />
+    <Compile Include="Menus\Menu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Asset\Asset.cs" />
-    <Compile Include="Asset\Building\Building.cs" />
-    <Compile Include="Asset\Employee\RegionalManager.cs" />
+    <Compile Include="Purchasables\Asset.cs" />
+    <Compile Include="Purchasables\Building\Building.cs" />
+    <Compile Include="Purchasables\Employee\RegionalManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

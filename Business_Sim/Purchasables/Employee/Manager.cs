@@ -4,7 +4,6 @@
     {
         public Manager() : base(EmployeeType.Manager)
         {
-
         }
     }
 }
