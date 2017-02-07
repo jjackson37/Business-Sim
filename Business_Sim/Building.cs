@@ -23,51 +23,51 @@
             switch (buildingType)
             {
                 case BuildingType.Flat:
-                    dailyIncome = 10.00M;
-                    dailyOutcome = 2.00M;
-                    buyPrice = 1000.00M;
-                    break;
-
-                case BuildingType.FlatBlock:
                     dailyIncome = 100.00M;
                     dailyOutcome = 20.00M;
                     buyPrice = 10000.00M;
                     break;
 
+                case BuildingType.FlatBlock:
+                    dailyIncome = 1000.00M;
+                    dailyOutcome = 200.00M;
+                    buyPrice = 100000.00M;
+                    break;
+
                 case BuildingType.House:
-                    dailyIncome = 20.00M;
-                    dailyOutcome = 4.00M;
-                    buyPrice = 2000.00M;
+                    dailyIncome = 200.00M;
+                    dailyOutcome = 40.00M;
+                    buyPrice = 20000.00M;
                     break;
 
                 case BuildingType.Shop:
-                    dailyIncome = 50.00M;
-                    dailyOutcome = 10.00M;
-                    buyPrice = 5000.00M;
-                    break;
-
-                case BuildingType.ShoppingCentre:
                     dailyIncome = 500.00M;
-                    dailyOutcome = 100.00M;
+                    dailyOutcome = 150.00M;
                     buyPrice = 50000.00M;
                     break;
 
-                case BuildingType.Office:
-                    dailyIncome = 150.00M;
-                    dailyOutcome = 30.00M;
-                    buyPrice = 15000.00M;
+                case BuildingType.ShoppingCentre:
+                    dailyIncome = 5000.00M;
+                    dailyOutcome = 1500.00M;
+                    buyPrice = 500000.00M;
                     break;
 
-                case BuildingType.OfficeBlock:
+                case BuildingType.Office:
                     dailyIncome = 1500.00M;
-                    dailyOutcome = 300.00M;
+                    dailyOutcome = 500.00M;
                     buyPrice = 150000.00M;
                     break;
 
+                case BuildingType.OfficeBlock:
+                    dailyIncome = 15000.00M;
+                    dailyOutcome = 5000.00M;
+                    buyPrice = 1500000.00M;
+                    break;
+
                 case BuildingType.SkyScraper:
-                    dailyIncome = 2500.00M;
-                    dailyOutcome = 500.00M;
-                    buyPrice = 250000.00M;
+                    dailyIncome = 25000.00M;
+                    dailyOutcome = 7500.00M;
+                    buyPrice = 2500000.00M;
                     break;
 
                 default:
@@ -84,7 +84,7 @@
         #region Enums
 
         /// <summary>
-        /// Building types
+        /// Building type
         /// </summary>
         public enum BuildingType
         {
@@ -154,6 +154,25 @@
             }
         }
 
+        //TODO: Worker <---> building implementation
+
+        /// <summary>
+        /// Amount of workers needed for the building to function
+        /// </summary>
+        public int workersNeeded { get; }
+
+        /// <summary>
+        /// Amount of workers currently assigned to the building
+        /// </summary>
+        public int currentWorkers { get; set; }
+
+        //TODO: Manager <---> building implementation
+
+        /// <summary>
+        /// Manager assigned to the building
+        /// </summary>
+        public Manager assignedManager { get; set; }
+
         /// <summary>
         /// Price to buy/add the building to the owned buildings list
         /// </summary>
@@ -183,8 +202,8 @@
             set
             {
                 _upgradeLevel = value;
-                dailyIncome = (buyPrice/100) * _upgradeLevel;
-                dailyOutcome = (dailyIncome/5);
+                dailyIncome = (buyPrice / 100) * _upgradeLevel;
+                dailyOutcome = (dailyIncome / 5);
                 sellPrice = (buyPrice / 2) * ((decimal)_upgradeLevel / 2);
                 upgradePrice = buyPrice * ((decimal)_upgradeLevel / 2);
             }
