@@ -7,6 +7,7 @@
     {
         #region Fields
 
+        private Manager _assignedManager;
         private int _upgradeLevel;
 
         #endregion Fields
@@ -26,56 +27,76 @@
                     dailyIncome = 100.00M;
                     dailyOutcome = 20.00M;
                     buyPrice = 10000.00M;
+                    workersNeeded = 1;
+                    canHaveManager = false;
                     break;
 
                 case BuildingType.FlatBlock:
                     dailyIncome = 1000.00M;
                     dailyOutcome = 200.00M;
                     buyPrice = 100000.00M;
+                    workersNeeded = 10;
+                    canHaveManager = true;
                     break;
 
                 case BuildingType.House:
                     dailyIncome = 200.00M;
                     dailyOutcome = 40.00M;
                     buyPrice = 20000.00M;
+                    workersNeeded = 1;
+                    canHaveManager = false;
                     break;
 
                 case BuildingType.Shop:
                     dailyIncome = 500.00M;
                     dailyOutcome = 150.00M;
                     buyPrice = 50000.00M;
+                    workersNeeded = 7;
+                    canHaveManager = true;
                     break;
 
                 case BuildingType.ShoppingCentre:
                     dailyIncome = 5000.00M;
                     dailyOutcome = 1500.00M;
                     buyPrice = 500000.00M;
+                    workersNeeded = 70;
+                    canHaveManager = true;
                     break;
 
                 case BuildingType.Office:
                     dailyIncome = 1500.00M;
                     dailyOutcome = 500.00M;
                     buyPrice = 150000.00M;
+                    workersNeeded = 30;
+                    canHaveManager = true;
                     break;
 
                 case BuildingType.OfficeBlock:
                     dailyIncome = 15000.00M;
                     dailyOutcome = 5000.00M;
                     buyPrice = 1500000.00M;
+                    workersNeeded = 300;
+                    canHaveManager = true;
                     break;
 
                 case BuildingType.SkyScraper:
                     dailyIncome = 25000.00M;
                     dailyOutcome = 7500.00M;
                     buyPrice = 2500000.00M;
+                    workersNeeded = 500;
+                    canHaveManager = true;
                     break;
 
                 default:
                     dailyIncome = 0;
                     dailyOutcome = 0;
                     buyPrice = 0;
+                    workersNeeded = 0;
+                    canHaveManager = false;
                     break;
             }
+            assignedManager = null;
+            currentWorkers = 0;
             upgradeLevel = 1;
         }
 
@@ -102,6 +123,25 @@
         #endregion Enums
 
         #region Properties
+
+        /// <summary>
+        /// Manager assigned to the building
+        /// </summary>
+        public Manager assignedManager
+        {
+            get { return _assignedManager; }
+            set
+            {
+                if (canHaveManager)
+                {
+                    _assignedManager = value;
+                }
+                else
+                {
+                    _assignedManager = null;
+                }
+            }
+        }
 
         /// <summary>
         /// Building type of the building. Affects the base value for income, outcome, and buy/sell/upgrade price
@@ -157,9 +197,14 @@
         //TODO: Worker <---> building implementation
 
         /// <summary>
-        /// Amount of workers needed for the building to function
+        /// Price to buy/add the building to the owned buildings list
         /// </summary>
-        public int workersNeeded { get; }
+        public decimal buyPrice { get; }
+
+        /// <summary>
+        /// Gets if the building can hold a manager
+        /// </summary>
+        public bool canHaveManager { get; }
 
         /// <summary>
         /// Amount of workers currently assigned to the building
@@ -167,17 +212,6 @@
         public int currentWorkers { get; set; }
 
         //TODO: Manager <---> building implementation
-
-        /// <summary>
-        /// Manager assigned to the building
-        /// </summary>
-        public Manager assignedManager { get; set; }
-
-        /// <summary>
-        /// Price to buy/add the building to the owned buildings list
-        /// </summary>
-        public decimal buyPrice { get; }
-
         /// <summary>
         /// Income building gives per game day
         /// </summary>
@@ -213,6 +247,11 @@
         /// Price to increase the upgrade level of te building
         /// </summary>
         public decimal upgradePrice { get; private set; }
+
+        /// <summary>
+        /// Amount of workers needed for the building to function at full potential
+        /// </summary>
+        public int workersNeeded { get; }
 
         #endregion Properties
     }

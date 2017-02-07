@@ -22,9 +22,9 @@ namespace Business_Sim
 
         #endregion Fields
 
-        #region Properties
-
         //TODO: Remove income generation from employees
+
+        #region Properties
 
         /// <summary>
         /// Total daily income of all assets

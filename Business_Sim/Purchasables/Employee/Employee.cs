@@ -81,6 +81,11 @@
         public decimal buyPrice { get; }
 
         /// <summary>
+        /// TEMP: Income earned daily
+        /// </summary>
+        public decimal dailyIncome { get; }
+
+        /// <summary>
         /// Cost of the employee per day
         /// </summary>
         public decimal dailyOutcome { get; }
@@ -91,12 +96,6 @@
         public EmployeeType employeeType { get; }
 
         //TODO: Remove daily income from employees
-
-        /// <summary>
-        /// TEMP: Income earned daily
-        /// </summary>
-        public decimal dailyIncome { get; }
-
         /// <summary>
         /// Returns the employee type as a string
         /// </summary>

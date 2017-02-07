@@ -4,6 +4,23 @@ namespace Business_Sim
 {
     internal class BuildingMenu : Menu
     {
+        #region Fields
+
+        private Game currentGame;
+
+        #endregion Fields
+
+        #region Constructors
+
+        public BuildingMenu(ref Game currentGame)
+        {
+            this.currentGame = currentGame;
+        }
+
+        #endregion Constructors
+
+        #region Methods
+
         /// <summary>
         /// Prints buildings menu and calls buildings functions depending on user input
         /// </summary>
@@ -19,7 +36,7 @@ namespace Business_Sim
                     Building.BuildingType buildingTypeToBuy = SelectBuildingType(2);
                     if (buildingTypeToBuy != Building.BuildingType.Unknown)
                     {
-                        game.cash = game.assets.Add(buildingTypeToBuy, game.cash);
+                        currentGame.cash = currentGame.assets.Add(buildingTypeToBuy, currentGame.cash);
                         PressKeyAndClear();
                     }
                     break;
@@ -30,10 +47,10 @@ namespace Business_Sim
                     Building.BuildingType buildingTypeToSell = SelectBuildingType(2);
                     if (!buildingTypeToSell.Equals(Building.BuildingType.Unknown))
                     {
-                        Building buildingToSell = game.assets.Find(buildingTypeToSell);
+                        Building buildingToSell = currentGame.assets.Find(buildingTypeToSell);
                         if (buildingToSell != null)
                         {
-                            game.cash += game.assets.Remove(buildingToSell);
+                            currentGame.cash += currentGame.assets.Remove(buildingToSell);
                         }
                         PressKeyAndClear();
                     }
@@ -45,17 +62,17 @@ namespace Business_Sim
                     Building.BuildingType buildingTypeToUpgrade = SelectBuildingType(2);
                     if (!buildingTypeToUpgrade.Equals(Building.BuildingType.Unknown))
                     {
-                        Building buildingToUpgrade = game.assets.Find(buildingTypeToUpgrade);
+                        Building buildingToUpgrade = currentGame.assets.Find(buildingTypeToUpgrade);
                         if (buildingToUpgrade != null)
                         {
-                            game.cash = game.assets.Upgrade(buildingToUpgrade, game.cash);
+                            currentGame.cash = currentGame.assets.Upgrade(buildingToUpgrade, currentGame.cash);
                         }
                         PressKeyAndClear();
                     }
                     break;
 
                 case '4':
-                    game.assets.ViewBuildings();
+                    currentGame.assets.ViewBuildings();
                     PressKeyAndClear();
                     break;
 
@@ -120,5 +137,7 @@ namespace Business_Sim
             }
             return returnValue;
         }
+
+        #endregion Methods
     }
 }

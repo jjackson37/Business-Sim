@@ -4,7 +4,24 @@ namespace Business_Sim
 {
     internal class EmployeeMenu : Menu
     {
+        #region Fields
+
+        private Game currentGame;
+
+        #endregion Fields
+
+        #region Constructors
+
+        public EmployeeMenu(ref Game currentGame)
+        {
+            this.currentGame = currentGame;
+        }
+
+        #endregion Constructors
+
         //TODO: Remove WIP tags from text
+
+        #region Methods
 
         /// <summary>
         /// Prints Employees menu and calls employees functions depending on user input
@@ -21,7 +38,7 @@ namespace Business_Sim
                     Employee.EmployeeType employeeTypeToBuy = SelectEmployeeType(2);
                     if (employeeTypeToBuy != Employee.EmployeeType.Unknown)
                     {
-                        game.cash = game.assets.Add(employeeTypeToBuy, game.cash);
+                        currentGame.cash = currentGame.assets.Add(employeeTypeToBuy, currentGame.cash);
                         PressKeyAndClear();
                     }
                     break;
@@ -32,17 +49,17 @@ namespace Business_Sim
                     Employee.EmployeeType employeeTypeToFire = SelectEmployeeType(2);
                     if (!employeeTypeToFire.Equals(Employee.EmployeeType.Unknown))
                     {
-                        Employee employeeToFire = game.assets.Find(employeeTypeToFire);
+                        Employee employeeToFire = currentGame.assets.Find(employeeTypeToFire);
                         if (employeeToFire != null)
                         {
-                            game.assets.Remove(employeeToFire);
+                            currentGame.assets.Remove(employeeToFire);
                         }
                         PressKeyAndClear();
                     }
                     break;
 
                 case '3':
-                    game.assets.ViewEmployees();
+                    currentGame.assets.ViewEmployees();
                     PressKeyAndClear();
                     break;
 
@@ -94,5 +111,7 @@ namespace Business_Sim
             }
             return returnValue;
         }
+
+        #endregion Methods
     }
 }

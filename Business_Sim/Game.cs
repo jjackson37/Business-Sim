@@ -24,9 +24,9 @@
 
         #endregion Fields
 
-        #region Constructors
-
         //TODO: Remove Dev difficulty level
+
+        #region Constructors
 
         /// <summary>
         /// Sets starting values of the game based on difficulty

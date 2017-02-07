@@ -7,14 +7,14 @@ namespace Business_Sim
     /// </summary>
     internal class Menu
     {
-        protected const string _INDENT = "    ";
-
         #region Fields
+
+        protected const string _INDENT = "    ";
 
         /// <summary>
         /// Currently loaded game
         /// </summary>
-        protected static Game game;
+        protected Game game;
 
         #endregion Fields
 
@@ -126,12 +126,12 @@ namespace Business_Sim
                 switch (Console.ReadKey(true).KeyChar)
                 {
                     case '1':
-                        BuildingMenu buildingMenuObject = new BuildingMenu();
+                        BuildingMenu buildingMenuObject = new BuildingMenu(ref game);
                         buildingMenuObject.RunMenu();
                         break;
 
                     case '2':
-                        EmployeeMenu employeeMenuObject = new EmployeeMenu();
+                        EmployeeMenu employeeMenuObject = new EmployeeMenu(ref game);
                         employeeMenuObject.RunMenu();
                         break;
 
