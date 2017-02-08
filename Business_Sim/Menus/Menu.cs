@@ -28,6 +28,7 @@ namespace Business_Sim
             bool isRunning = true;
             while (isRunning)
             {
+                Console.Clear();
                 Console.Write("-BUSINESS SIM-\n1-New business\n2-Load business\n" +
                     "3-Business help\n4-Quit\n");
                 switch (Console.ReadKey(true).KeyChar)
@@ -85,9 +86,8 @@ namespace Business_Sim
                         break;
 
                     case '3':
-                        Console.WriteLine("Amazing help placeholder!");
-                        PressKeyAndClear();
-                        //TODO: Help menu function
+                        HelpMenu helpMenuObject = new HelpMenu();
+                        helpMenuObject.RunMenu();
                         break;
 
                     case '4':
@@ -121,6 +121,7 @@ namespace Business_Sim
             bool inGame = true;
             while (inGame)
             {
+                Console.Clear();
                 Console.Write("-Business Sim-\nDate:" + game.date.currentDateString + "\nCash:" + game.cash + "\n");
                 Console.Write("1-Properties\n2-Employees (WIP)\n3-Next day\n4-Exit to main menu\n");
                 switch (Console.ReadKey(true).KeyChar)
