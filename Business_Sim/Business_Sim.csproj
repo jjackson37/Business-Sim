@@ -58,6 +58,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataModels\AssetModels\AssetModel.cs" />
+    <Compile Include="DataModels\AssetModels\BuildingModels\BuildingModel.cs" />
+    <Compile Include="DataModels\AssetModels\BuildingModels\FlatBlockModel.cs" />
+    <Compile Include="DataModels\AssetModels\BuildingModels\FlatModel.cs" />
+    <Compile Include="DataModels\AssetModels\BuildingModels\HouseModel.cs" />
+    <Compile Include="DataModels\AssetModels\BuildingModels\OfficeBlockModel.cs" />
+    <Compile Include="DataModels\AssetModels\BuildingModels\OfficeModel.cs" />
+    <Compile Include="DataModels\AssetModels\BuildingModels\ShopModel.cs" />
+    <Compile Include="DataModels\AssetModels\BuildingModels\ShoppingCentreModel.cs" />
+    <Compile Include="DataModels\AssetModels\BuildingModels\SkyScraperModel.cs" />
+    <Compile Include="DataModels\AssetModels\EmployeeModels\AdministratorModel.cs" />
+    <Compile Include="DataModels\AssetModels\EmployeeModels\DirectorModel.cs" />
+    <Compile Include="DataModels\AssetModels\EmployeeModels\EmployeeModel.cs" />
+    <Compile Include="DataModels\AssetModels\EmployeeModels\ManagerModel.cs" />
+    <Compile Include="DataModels\AssetModels\EmployeeModels\RegionalManagerModel.cs" />
+    <Compile Include="DataModels\AssetModels\EmployeeModels\WorkerModel.cs" />
+    <Compile Include="DataModels\GameModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
