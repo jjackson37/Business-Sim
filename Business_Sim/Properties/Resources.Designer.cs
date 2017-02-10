@@ -61,11 +61,31 @@ namespace Business_Sim.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to IIIII-BUYING-&amp;-SELLING--------------------------------------------------IIIII
+        ///I///I                                                                   I///I
+        ///I\\\I---BUYING----------------------------------------------------------I\\\I
+        ///I///I                                                                   I///I
+        ///I\\\I When buying buildings you will first be asked for the type you    I\\\I
+        ///I///I want to purchase. Different building types have different income, I///I
+        ///I\\\I outcome, buying price and upgrad [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string BuildingBuySellHelp {
             get {
                 return ResourceManager.GetString("BuildingBuySellHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+        ///I\\\I ______                                                                             I\\\I
+        ///I///I |     \              _____               _____  ______    ______                   I///I
+        ///I\\\I |      |  |      |  /        | |\     | |      /         /                         I\\\I
+        ///I///I |     /   |      | |         | | \    | |     |         /                          I///I
+        ///I\\\I |======   |      |  \_____ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string TitleMenu {
+            get {
+                return ResourceManager.GetString("TitleMenu", resourceCulture);
             }
         }
     }

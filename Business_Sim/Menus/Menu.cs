@@ -29,8 +29,7 @@ namespace Business_Sim
             while (isRunning)
             {
                 Console.Clear();
-                Console.Write("-BUSINESS SIM-\n1-New business\n2-Load business\n" +
-                    "3-Business help\n4-Quit\n");
+                Console.Write(Properties.Resources.TitleMenu);
                 switch (Console.ReadKey(true).KeyChar)
                 {
                     case '1':

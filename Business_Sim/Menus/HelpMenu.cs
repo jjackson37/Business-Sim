@@ -50,11 +50,16 @@ namespace Business_Sim
                         Console.WriteLine(Properties.Resources.BuildingBuySellHelp);
                         PressKeyAndClear();
                         break;
+
                     case '2':
+                        //Console.WriteLine(Properties.Resources);
+                        PressKeyAndClear();
                         break;
+
                     case '3':
                         inBuildingsHelp = false;
                         break;
+
                     default:
                         Console.WriteLine("Invalid Input");
                         PressKeyAndClear();
@@ -75,6 +80,7 @@ namespace Business_Sim
                     case '3':
                         inEmployeesHelp = false;
                         break;
+
                     default:
                         Console.WriteLine("Invalid Input");
                         PressKeyAndClear();

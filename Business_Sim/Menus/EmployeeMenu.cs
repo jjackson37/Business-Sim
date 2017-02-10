@@ -19,8 +19,6 @@ namespace Business_Sim
 
         #endregion Constructors
 
-        //TODO: Remove WIP tags from text
-
         #region Methods
 
         /// <summary>
@@ -28,7 +26,7 @@ namespace Business_Sim
         /// </summary>
         public void RunMenu()
         {
-            Console.Write("{0}-Employees (WIP)-\n{0}1-Hire\n{0}2-Fire\n{0}3-View current employees\n", _INDENT);
+            Console.Write("{0}-Employees -\n{0}1-Hire\n{0}2-Fire\n{0}3-View current employees\n{0}4-Assign employees", _INDENT);
             switch (Console.ReadKey(true).KeyChar)
             {
                 case '1':
@@ -61,6 +59,9 @@ namespace Business_Sim
                 case '3':
                     currentGame.assets.ViewEmployees();
                     PressKeyAndClear();
+                    break;
+
+                case '4':
                     break;
 
                 default:

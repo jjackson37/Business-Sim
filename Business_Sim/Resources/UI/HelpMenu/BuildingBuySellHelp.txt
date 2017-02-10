@@ -1,0 +1,20 @@
+IIIII-BUYING-&-SELLING-------------------------------------------------------------------IIIII
+I///I                                                                                    I///I
+I\\\I---BUYING---------------------------------------------------------------------------I\\\I
+I///I                                                                                    I///I
+I\\\I When buying buildings you will first be asked for the type you want to purchase.   I\\\I
+I///I Different building types have different income, outcome, buying price and upgrade  I///I
+I\\\I prices. After choosing what building you want to buy a lvl 1 version of that       I\\\I
+I///I building will be added to your owned buildings and the price of it will be removed I///I
+I\\\I from your cash. In the case that you do not have enough cash to purchase the       I\\\I
+I///I building you will be returned to the main menu without the building.               I///I
+I\\\I                                                                                    I\\\I
+I///I--SELLING---------------------------------------------------------------------------I///I
+I\\\I                                                                                    I\\\I
+I///I When you want to sell a building you will be asked what type of building it is     I///I
+I\\\I you want to sell, after selecting the type a list will be shown with all your      I\\\I
+I///I buildings of that type. When you've selected the building it will be removed from  I///I
+I\\\I your owned buildings and the sell price, dependent on the type and upgrade level,  I\\\I
+I///I will be added to your total cash                                                   I///I
+I\\\I                                                                                    I\\\I
+IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
