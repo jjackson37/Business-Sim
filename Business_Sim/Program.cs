@@ -12,7 +12,7 @@ namespace Business_Sim
 
         private static void Main(string[] args)
         {
-            System.Console.WindowWidth = 125;
+            System.Console.WindowWidth = 94;
             Menu mainMenu = new Menu();
             mainMenu.MainMenuSelection();
         }

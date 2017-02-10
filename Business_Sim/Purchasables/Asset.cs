@@ -13,7 +13,8 @@ namespace Business_Sim
         /// <summary>
         /// List of owned buildings for the current game
         /// </summary>
-        private List<Building> ownedBuildings = new List<Building>();
+        private List<List<Building>> ownedBuildings = new List<List<Building>>();
+
 
         /// <summary>
         /// List of employees for the current game
@@ -22,9 +23,27 @@ namespace Business_Sim
 
         #endregion Fields
 
-        #region Properties
+        public Asset()
+        {
+            List<Building> flats = new List<Building>();
+            ownedBuildings.Add(flats);
+            List<Building> flatBlocks = new List<Building>();
+            ownedBuildings.Add(flatBlocks);
+            List<Building> houses = new List<Building>();
+            ownedBuildings.Add(houses);
+            List<Building> shops = new List<Building>();
+            ownedBuildings.Add(shops);
+            List<Building> shoppingCentres = new List<Building>();
+            ownedBuildings.Add(shoppingCentres);
+            List<Building> offices = new List<Building>();
+            ownedBuildings.Add(offices);
+            List<Building> officeBlocks = new List<Building>();
+            ownedBuildings.Add(officeBlocks);
+            List<Building> skyscrapers = new List<Building>();
+            ownedBuildings.Add(skyscrapers);
+        }
 
-        //TODO: Remove income generation from employees
+        #region Properties
 
         /// <summary>
         /// Total daily income of all assets
@@ -34,13 +53,12 @@ namespace Business_Sim
             get
             {
                 decimal incomeReturn = 0;
-                foreach (Building currentBuilding in ownedBuildings)
+                foreach (List<Building> currentList in ownedBuildings)
                 {
-                    incomeReturn += currentBuilding.dailyIncome;
-                }
-                foreach (Employee currentEmployee in ownedEmployees)
-                {
-                    incomeReturn += currentEmployee.dailyIncome;
+                    foreach (Building currentBuilding in currentList)
+                    {
+                        incomeReturn += (currentBuilding.dailyIncome * (currentBuilding.currentWorkers / currentBuilding.workersNeeded));
+                    }
                 }
                 return incomeReturn;
             }
@@ -54,9 +72,12 @@ namespace Business_Sim
             get
             {
                 decimal outcomeReturn = 0;
-                foreach (Building currentBuilding in ownedBuildings)
+                foreach (List<Building> currentList in ownedBuildings)
                 {
-                    outcomeReturn += currentBuilding.dailyOutcome;
+                    foreach (Building currentBuilding in currentList)
+                    {
+                        outcomeReturn += (currentBuilding.dailyOutcome);
+                    }
                 }
                 foreach (Employee currentEmployee in ownedEmployees)
                 {
@@ -82,7 +103,7 @@ namespace Business_Sim
             if (currentCash >= buildingToBuy.buyPrice)
             {
                 currentCash -= buildingToBuy.buyPrice;
-                ownedBuildings.Add(buildingToBuy);
+                GetBuildingList(buildingTypeToBuy).Add(buildingToBuy);
                 Console.WriteLine("        " + buildingToBuy.buildingTypeString + " Purchased successfully");
             }
             else
@@ -125,9 +146,9 @@ namespace Business_Sim
             bool foundAResult = false;
             if (ownedBuildings.Count != 0)
             {
-                foreach (Building currentBuilding in ownedBuildings)
+                foreach (Building currentBuilding in GetBuildingList(buildingType))
                 {
-                    if (currentBuilding.buildingType.Equals(buildingType))
+                    if (currentBuilding != null)
                     {
                         Console.WriteLine(string.Format("        {4} - Lvl {0} {1} - Daily income {2} - Daily outcome {3} - Sell price {5} - Upgrade price {6}",
                             currentBuilding.upgradeLevel, currentBuilding.buildingTypeString, currentBuilding.dailyIncome, currentBuilding.dailyOutcome,
@@ -143,10 +164,7 @@ namespace Business_Sim
                 {
                     Console.Write("        ");
                     int userInput = int.Parse(Console.ReadLine());
-                    if (ownedBuildings[userInput].buildingType.Equals(buildingType))
-                    {
-                        returnBuilding = ownedBuildings[userInput];
-                    }
+                    returnBuilding = GetBuildingList(buildingType)[userInput];
                 }
                 catch (Exception ex)
                 {
@@ -215,7 +233,7 @@ namespace Business_Sim
         {
             if (!buildingToSell.Equals(null))
             {
-                ownedBuildings.Remove(buildingToSell);
+                GetBuildingList(buildingToSell.buildingType).Remove(buildingToSell);
                 Console.WriteLine(string.Format("        {0} sold for {1}"
                     , buildingToSell.buildingTypeString, buildingToSell.sellPrice));
             }
@@ -275,11 +293,14 @@ namespace Business_Sim
         {
             if (ownedBuildings.Count != 0)
             {
-                foreach (Building currentBuilding in ownedBuildings)
+                foreach (List<Building> currentList in ownedBuildings)
                 {
-                    Console.WriteLine(string.Format("    Lvl {0} {1} - Daily income {2} - Daily outcome {3}"
+                    foreach (Building currentBuilding in currentList)
+                    {
+                        Console.WriteLine(string.Format("    Lvl {0} {1} - Daily income {2} - Daily outcome {3}"
                         , currentBuilding.upgradeLevel, currentBuilding.buildingTypeString
                         , currentBuilding.dailyIncome, currentBuilding.dailyOutcome));
+                    }
                 }
             }
             else
@@ -305,6 +326,32 @@ namespace Business_Sim
             {
                 Console.WriteLine("    None hired");
             }
+        }
+
+        private List<Building> GetBuildingList(Building.BuildingType listType)
+        {
+            switch (listType)
+            {
+                case Building.BuildingType.Flat:
+                    return ownedBuildings[0];
+                case Building.BuildingType.FlatBlock:
+                    return ownedBuildings[1];
+                case Building.BuildingType.House:
+                    return ownedBuildings[2];
+                case Building.BuildingType.Shop:
+                    return ownedBuildings[3];
+                case Building.BuildingType.ShoppingCentre:
+                    return ownedBuildings[4];
+                case Building.BuildingType.Office:
+                    return ownedBuildings[5];
+                case Building.BuildingType.OfficeBlock:
+                    return ownedBuildings[6];
+                case Building.BuildingType.SkyScraper:
+                    return ownedBuildings[7];
+                default:
+                    break;
+            }
+            return null;
         }
 
         #endregion Methods
