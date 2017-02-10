@@ -4,9 +4,8 @@
 
 |Branch   |Build status                                                                                                                        |
 |---------|------------------------------------------------------------------------------------------------------------------------------------|
-|v1.0     |[![Build Status](https://travis-ci.org/jjackson37/Business-Sim.svg?branch=v1.0)](https://travis-ci.org/jjackson37/Business-Sim)     |
-|v1.0_test|[![Build Status](https://travis-ci.org/jjackson37/Business-Sim.svg?branch=v1.0_test)](https://travis-ci.org/jjackson37/Business-Sim)     |
-|v1.0_dev |[![Build Status](https://travis-ci.org/jjackson37/Business-Sim.svg?branch=v1.0_dev)](https://travis-ci.org/jjackson37/Business-Sim) |
+|v0.1     |[![Build Status](https://travis-ci.org/jjackson37/Business-Sim.svg?branch=v0.1)](https://travis-ci.org/jjackson37/Business-Sim)     |
+
 
 ## Completed features
 
