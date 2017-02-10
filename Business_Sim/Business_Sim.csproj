@@ -83,7 +83,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\UI\HelpMenu\BuildingBuySellHelp.txt" />
+    <None Include="Resources\UI\HelpMenu\buildingbuysellhelp.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
