@@ -1,12 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Business_Sim.DataModels.AssetModels.EmployeeModels;
 
 namespace Business_Sim.DataModels.AssetModels.BuildingModels
 {
-    class BuildingModel:AssetModel
+    internal class BuildingModel : AssetModel
     {
+        protected override string className
+        {
+            get
+            {
+                return "BuildingModel";
+            }
+        }
+
+        public int buildingLevel { get; set; }
+        public int workersRequired { get; set; }
+        public int currentWorkers { get; set; }
+        public virtual ManagerModel assignedManager { get; set; }
+
     }
 }

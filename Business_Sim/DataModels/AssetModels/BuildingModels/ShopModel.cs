@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Business_Sim.DataModels.AssetModels.BuildingModels
+﻿namespace Business_Sim.DataModels.AssetModels.BuildingModels
 {
-    class ShopModel : BuildingModel
+    internal class ShopModel : BuildingModel
     {
+        protected override string className
+        {
+            get
+            {
+                return "ShopModel";
+            }
+        }
     }
 }

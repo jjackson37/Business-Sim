@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Business_Sim.DataModels;
+using System;
 
 namespace Business_Sim
 {
@@ -12,7 +9,8 @@ namespace Business_Sim
 
         private static void Main(string[] args)
         {
-
+            GameModel test = new GameModel();
+            Console.ReadKey();
         }
 
         #endregion Methods

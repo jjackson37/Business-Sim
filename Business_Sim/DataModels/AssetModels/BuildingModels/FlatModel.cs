@@ -1,12 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Business_Sim.DataModels.AssetModels.EmployeeModels;
 
 namespace Business_Sim.DataModels.AssetModels.BuildingModels
 {
-    class FlatModel : BuildingModel
+    internal class FlatModel : BuildingModel
     {
+        protected override string className
+        {
+            get
+            {
+                return "FlatModel";
+            }
+        }
+
+        public override ManagerModel assignedManager
+        {
+            get
+            {
+                return null;
+            }
+        }
     }
 }

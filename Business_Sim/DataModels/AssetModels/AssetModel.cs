@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Business_Sim.DataModels.AssetModels
+﻿namespace Business_Sim.DataModels.AssetModels
 {
-    class AssetModel:GameModel
+    internal class AssetModel : GameModel
     {
+        protected override string className
+        {
+            get
+            {
+                return "AssetModel";
+            }
+        }
+
+        public decimal income { get; set; }
+        public decimal outcome { get; set; }
     }
 }
