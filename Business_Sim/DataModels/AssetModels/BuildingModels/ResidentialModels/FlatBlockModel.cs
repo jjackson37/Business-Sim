@@ -1,8 +1,8 @@
 ﻿using Business_Sim.DataModels.AssetModels.EmployeeModels;
 
-namespace Business_Sim.DataModels.AssetModels.BuildingModels
+namespace Business_Sim.DataModels.AssetModels.BuildingModels.ResidentialModels
 {
-    internal class FlatBlockModel : FlatModel
+    internal class FlatBlockModel : ResidentialBuildingModel
     {
         protected override string className
         {
@@ -11,7 +11,5 @@ namespace Business_Sim.DataModels.AssetModels.BuildingModels
                 return "FlatBlockModel";
             }
         }
-
-        public override ManagerModel assignedManager { get; set; }
     }
 }

@@ -60,11 +60,12 @@
   <ItemGroup>
     <Compile Include="DataModels\AssetModels\AssetModel.cs" />
     <Compile Include="DataModels\AssetModels\BuildingModels\BuildingModel.cs" />
-    <Compile Include="DataModels\AssetModels\BuildingModels\FlatBlockModel.cs" />
-    <Compile Include="DataModels\AssetModels\BuildingModels\FlatModel.cs" />
-    <Compile Include="DataModels\AssetModels\BuildingModels\HouseModel.cs" />
+    <Compile Include="DataModels\AssetModels\BuildingModels\ResidentialModels\FlatBlockModel.cs" />
+    <Compile Include="DataModels\AssetModels\BuildingModels\ResidentialModels\FlatModel.cs" />
+    <Compile Include="DataModels\AssetModels\BuildingModels\ResidentialModels\HouseModel.cs" />
     <Compile Include="DataModels\AssetModels\BuildingModels\OfficeBlockModel.cs" />
     <Compile Include="DataModels\AssetModels\BuildingModels\OfficeModel.cs" />
+    <Compile Include="DataModels\AssetModels\BuildingModels\ResidentialModels\ResidentialBuildingModel.cs" />
     <Compile Include="DataModels\AssetModels\BuildingModels\ShopModel.cs" />
     <Compile Include="DataModels\AssetModels\BuildingModels\ShoppingCentreModel.cs" />
     <Compile Include="DataModels\AssetModels\BuildingModels\SkyScraperModel.cs" />
